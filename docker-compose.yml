@@ -1,0 +1,72 @@
+services:
+  vetpathdb:
+    build: .
+    ports:
+      # Loopback-only by default — VetPathDB has no auth. To reach it from
+      # other machines, put it behind an authenticating reverse proxy, or
+      # change this to "8080:8080" (exposes on all host interfaces).
+      - "127.0.0.1:8080:8080"
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    extra_hosts:
+      - "host.docker.internal:host-gateway"  # Required for Linux
+    environment:
+      - MONGODB_URI=mongodb://mongodb:27017/
+      # Bind inside the container to all interfaces so the published port works;
+      # the host port mapping above controls actual exposure.
+      - VETPATHDB_HOST=0.0.0.0
+      # Pin the in-container port so it stays 8080 even if TLS certs are later
+      # mounted (a cert would otherwise switch the default to 9443). If you DO
+      # mount certs, set this to 9443 and change the ports mapping to match.
+      - VETPATHDB_PORT=8080
+      # LLM endpoint on the Docker host — adjust for your setup:
+      #   Docker Desktop (Mac/Windows): host.docker.internal works automatically
+      #   Linux: the extra_hosts directive above enables host.docker.internal
+      - AI_LLM_BASE_URL=${AI_LLM_BASE_URL:-http://host.docker.internal:8080/v1}
+    volumes:
+      - ./pdf:/app/pdf:ro
+      - vectorstore:/app/cases_vectorstore
+
+  mongodb:
+    image: mongo:7.0
+    volumes:
+      - mongodata:/data/db
+    # Internal-only by default; uncomment to publish for host access (may conflict with host MongoDB)
+    # ports:
+    #   - "27017:27017"
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  # Optional bundled LLM for the "zero-setup extraction" path.
+  # Enable with: docker compose --profile with-llm up -d
+  # See docs/LLM_SETUP.md for model choices and GPU configuration.
+  ollama:
+    profiles: ["with-llm"]
+    image: ollama/ollama:latest
+    volumes:
+      - ollama-data:/root/.ollama
+    # GPU passthrough: uncomment if nvidia-container-toolkit is installed.
+    # Host must also have a recent NVIDIA driver. CPU-only works without this.
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: all
+    #           capabilities: [gpu]
+    healthcheck:
+      test: ["CMD-SHELL", "ollama list >/dev/null 2>&1 || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+volumes:
+  mongodata:
+  vectorstore:
+  ollama-data:

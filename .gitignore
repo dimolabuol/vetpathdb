@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.venv/
+venv/
+
+# Testing
+.pytest_cache/
+
+# Environment & secrets
+.env*
+certs/
+
+# Data & storage
+cases_vectorstore*/
+pdf/
+uploads/
+validation_data/
+*.sqlite
+*.sqlite3
+*.sqlite-wal
+*.sqlite-shm
+*.db
+
+# Logs
+*.log
+requests.log
+
+# Dependencies
+node_modules/
+ui/
+
+# IDE & tools
+.DS_Store
+.vscode/
+.idea/
+.playwright-mcp/
+
+# Local docker-compose overrides (sandbox configs, never committed)
+docker-compose.*.yml
+!docker-compose.yml

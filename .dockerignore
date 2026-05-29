@@ -1,0 +1,58 @@
+# Don't ship build / dev artefacts into the docker image.
+# Mirrors the spirit of .gitignore but is enforced at docker-build time.
+
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Python build artefacts
+__pycache__
+*.pyc
+*.pyo
+*.egg-info
+.venv
+venv
+build
+dist
+
+# Test artefacts
+.pytest_cache
+.coverage
+.tox
+htmlcov
+
+# Local data (user PDFs, vector stores, demo DBs) — image rebuilds the
+# vector store inside its own volume; PDFs are bind-mounted at runtime.
+pdf
+uploads
+cases_vectorstore*
+validation_data
+*.sqlite3
+*.db
+
+# Secrets and local config
+.env
+.env.*
+certs
+
+# Local docker-compose overrides (the sandbox file is gitignored already,
+# but keep parity here in case it's been generated locally).
+docker-compose.*.yml
+!docker-compose.yml
+
+# Logs
+*.log
+
+# Editor / tooling state
+.DS_Store
+.vscode
+.idea
+.playwright-mcp
+
+# CI metadata not needed at runtime
+.github
+
+# Node (only if you ever add a JS build step)
+node_modules
+ui

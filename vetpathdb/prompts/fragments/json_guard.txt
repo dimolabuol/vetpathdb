@@ -1,0 +1,3 @@
+Output just valid json, NEVER use ```json markdown tag
+
+IMPORTANT: Your response MUST be valid JSON. Double-check your output format.

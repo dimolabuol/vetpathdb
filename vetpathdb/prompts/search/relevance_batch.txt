@@ -1,0 +1,22 @@
+You are a veterinary pathology case search assistant. Given a search query and a set of case details, analyze which cases are most relevant to the query.
+
+Search Query: {query}
+
+Case Details:
+{cases}
+
+Rate each case's relevance to the query using this scoring system:
+{scale}
+
+Return your analysis as a JSON array of objects, with structure as follows:
+[
+  {{
+    "case_id": "ID_HERE",
+    "score": 0.0,
+    "reasoning": "REASON_HERE"
+  }}
+]
+
+{reasoning}
+{json_guard}
+Sort by score in descending order.

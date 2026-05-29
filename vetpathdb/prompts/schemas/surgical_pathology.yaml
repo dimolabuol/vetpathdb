@@ -1,0 +1,220 @@
+name: Surgical Pathology
+code: SP
+description: Surgical biopsy and excision pathology reports
+
+ui:
+  icon: fa-microscope
+  label_plural: SP Reports
+
+detection_patterns:
+  filename: ["_SP_", "_SP.", "-SP_", "-SP."]
+  content:
+    - "surgical pathology"
+    - "histopathology report"
+    - "biopsy"
+    - "excision"
+  content_regex:
+    - 'surgical\s*p\w*\s*pathology\s*report'
+    - 'surg\w*\s*path\w*\s*report'
+
+schema: |
+  {
+    "summary": "",
+    "report_metadata": {
+      "case_id": "",
+      "report_type": "SP",
+      "filenames": ["<array of all files involved in the case>"],
+      "pathologists": ["<use array listing all relevant names, no titles, just names>"],
+      "typed_by": ["<use array listing all relevant names, no titles, just names>"],
+      "date_received": "YYYY-MM-DD",
+      "date_of_surgery": "YYYY-MM-DD",
+      "accession_id": "",
+      "previous_case_id": "",
+      "referring_veterinarian": "",
+      "external_reference": ""
+    },
+    "animal_details": {
+      "species": "<standardised category if stated (e.g. Canine, Feline, Equine, Bovine, Avian, Reptile). Use verbatim source text if no clear category applies>",
+      "breed": "",
+      "age": "<full years only as integer, use 0 if less than year>",
+      "sex": "<Male / Female>",
+      "neutered": "<yes, no, or unknown>",
+      "owner": "",
+      "animal_name": "",
+      "bodyweight": "<always in kg, just integer, without unit>"
+    },
+    "clinical_details": {
+      "clinical_diagnosis": "",
+      "clinical_suspicion": "",
+      "histopathology_request": "",
+      "other": {},
+      "clinical_details_keywords": []
+    },
+    "gross_findings": {
+      "tissue_samples": [
+        {
+          "block_id": "",
+          "tissue_type": "",
+          "description": ""
+        }
+      ],
+      "other": {},
+      "gross_findings_keywords": []
+    },
+    "histopathology": {
+      "description": "",
+      "diagnosis": "",
+      "tumor_type": "",
+      "tumor_location": "",
+      "tumor_size": "",
+      "morphological_features": {
+        "cell_size": "",
+        "cell_shape": "",
+        "nuclear_characteristics": "",
+        "mitotic_figures": "",
+        "necrosis": ""
+      },
+      "stains": [
+        {
+          "stain_name": "",
+          "result": ""
+        }
+      ],
+      "immunohistochemistry": {
+        "markers_used": [],
+        "results": [
+          {
+            "marker": "",
+            "observations": "",
+            "intensity": "",
+            "distribution": ""
+          }
+        ]
+      },
+      "other": {},
+      "histopathology_keywords": []
+    },
+    "bacteriology": {
+      "results": [],
+      "other": {},
+      "bacteriology_keywords": []
+    },
+    "comment": "",
+    "case_keywords": [],
+    "rag_summary": ""
+  }
+
+enrichment:
+  fields:
+    case_keywords:
+      type: array
+      description: >
+        Keywords broadly describing the case. All lowercase, short,
+        low cardinality. Used to filter across thousands of cases.
+        Describe the medical problem itself, not metadata (species,
+        breed, dates are already in structured fields).
+    rag_summary:
+      type: string
+      description: >
+        Dense factual summary for vector similarity search. Cram as
+        many important facts from the case as possible. Hard facts
+        only, no fluff. Not human-facing; exists solely to maximise
+        signal for a RAG system.
+  exclude_from_keywords:
+    - report_metadata
+    - animal_details
+
+form:
+  sections:
+    - inherit: common.signalment
+    - inherit: common.metadata
+      extra_fields:
+        - path: report_metadata.date_of_surgery
+          label: Date of surgery
+          kind: scalar
+          rule: yyyy_mm_dd
+    - id: clinical
+      title: Clinical details
+      fields:
+        - path: clinical_details.clinical_diagnosis
+          label: Clinical diagnosis
+          kind: scalar
+          rule: verbatim
+        - path: clinical_details.clinical_suspicion
+          label: Clinical suspicion
+          kind: scalar
+          rule: verbatim
+        - path: clinical_details.histopathology_request
+          label: Histopathology request
+          kind: scalar
+          rule: verbatim
+    - id: gross
+      title: Gross findings
+      fields:
+        - path: gross_findings.tissue_samples
+          label: Tissue samples
+          kind: set
+          description: "LLM prompt: block_id, tissue_type, description per sample. LLM rule: include all items from report, do not skip any. Do not invent entries."
+    - id: histopathology
+      title: Histopathology
+      fields:
+        - path: histopathology.description
+          label: Description
+          kind: scalar
+          rule: verbatim
+        - path: histopathology.diagnosis
+          label: Diagnosis
+          kind: scalar
+          rule: verbatim
+        - path: histopathology.tumor_type
+          label: "Tumour type"
+          kind: scalar
+          rule: dont_invent
+        - path: histopathology.tumor_location
+          label: "Tumour location"
+          kind: scalar
+          rule: dont_invent
+        - path: histopathology.tumor_size
+          label: "Tumour size"
+          kind: scalar
+          rule: dont_invent
+        - path: histopathology.morphological_features.cell_size
+          label: Cell size
+          kind: scalar
+          rule: dont_invent
+        - path: histopathology.morphological_features.cell_shape
+          label: Cell shape
+          kind: scalar
+          rule: dont_invent
+        - path: histopathology.morphological_features.nuclear_characteristics
+          label: Nuclear characteristics
+          kind: scalar
+          rule: dont_invent
+        - path: histopathology.morphological_features.mitotic_figures
+          label: Mitotic figures
+          kind: scalar
+          rule: dont_invent
+        - path: histopathology.morphological_features.necrosis
+          label: Necrosis
+          kind: scalar
+          rule: dont_invent
+        - path: histopathology.stains
+          label: Stains
+          kind: set
+          rule: set_complete
+        - path: histopathology.immunohistochemistry.markers_used
+          label: IHC markers used
+          kind: set
+          rule: set_complete
+        - path: histopathology.immunohistochemistry.results
+          label: IHC results
+          kind: set
+          description: "LLM prompt: marker, observations, intensity, distribution per result. LLM rule: include all items from report, do not skip any. Do not invent entries."
+    - id: bacteriology
+      title: Bacteriology
+      fields:
+        - path: bacteriology.results
+          label: Bacteriology results
+          kind: set
+          rule: set_complete
+    - inherit: common.comment

@@ -1,0 +1,622 @@
+[
+  {
+    "case_id": "90001",
+    "processed_at": "2026-01-15T10:00:00Z",
+    "source_file": "90001-SP-demo.json",
+    "data": {
+      "summary": "Eight-year-old male neutered Boxer with a 3 cm cutaneous mast cell tumour on the left forelimb. Patnaik grade II with moderate mitotic activity. Margins incomplete laterally.",
+      "report_metadata": {
+        "case_id": "90001",
+        "report_type": "SP",
+        "filenames": ["90001_SP_report.txt"],
+        "pathologists": ["Dr. A. Demo"],
+        "typed_by": ["Tech Demo"],
+        "date_received": "2026-01-12",
+        "date_of_surgery": "2026-01-10",
+        "accession_id": "",
+        "previous_case_id": "",
+        "referring_veterinarian": "Dr. B. Example",
+        "external_reference": ""
+      },
+      "animal_details": {
+        "species": "Canine",
+        "breed": "Boxer",
+        "age": 8,
+        "sex": "Male",
+        "neutered": "yes",
+        "owner": "Demo Owner",
+        "animal_name": "Bruno",
+        "bodyweight": 32
+      },
+      "clinical_details": {
+        "clinical_diagnosis": "Suspected cutaneous mast cell tumour",
+        "clinical_suspicion": "Neoplasia",
+        "histopathology_request": "Confirm diagnosis, grade tumour, assess margins",
+        "other": {},
+        "clinical_details_keywords": ["mast cell tumour", "neoplasia", "skin mass"]
+      },
+      "gross_findings": {
+        "tissue_samples": [
+          {"block_id": "A1", "tissue_type": "skin and subcutis", "description": "Firm, raised, partially alopecic nodule, 3 cm diameter, left forelimb"}
+        ],
+        "other": {},
+        "gross_findings_keywords": ["nodule", "skin", "forelimb"]
+      },
+      "histopathology": {
+        "description": "Non-encapsulated, moderately cellular, infiltrative dermal and subcutaneous neoplasm composed of round cells arranged in sheets and cords. Cells have moderate amounts of granular cytoplasm with metachromatic granules on toluidine blue staining. Nuclei are round with single nucleoli. Mitotic count 5 per 10 high power fields. Moderate eosinophilic infiltrate. Tumour extends to the lateral surgical margin.",
+        "diagnosis": "Cutaneous mast cell tumour, Patnaik grade II",
+        "tumor_type": "mast cell tumour",
+        "tumor_location": "skin, left forelimb",
+        "tumor_size": "3 cm",
+        "morphological_features": {
+          "cell_size": "moderate",
+          "cell_shape": "round",
+          "nuclear_characteristics": "round nuclei, single nucleoli",
+          "mitotic_figures": "5 per 10 HPF",
+          "necrosis": "absent"
+        },
+        "stains": [
+          {"stain_name": "H&E", "result": "diagnostic"},
+          {"stain_name": "Toluidine blue", "result": "positive, metachromatic granules"}
+        ],
+        "immunohistochemistry": {"markers_used": [], "results": []},
+        "other": {},
+        "histopathology_keywords": ["mast cell tumour", "patnaik grade ii", "incomplete margins", "eosinophils"]
+      },
+      "bacteriology": {"results": [], "other": {}, "bacteriology_keywords": []},
+      "comment": "The tumour is incompletely excised at the lateral margin. Recommend re-excision with wider margins or adjunctive therapy. Ki67 immunohistochemistry may be considered for prognostic purposes.",
+      "case_keywords": ["mast cell tumour", "grade ii", "incomplete excision", "canine", "skin"],
+      "rag_summary": "Eight-year-old male neutered Boxer presenting with 3 cm cutaneous nodule left forelimb. Histologically confirmed as mast cell tumour Patnaik grade II. Moderately cellular round cell neoplasm with metachromatic granules on toluidine blue. Mitotic count 5 per 10 HPF. Moderate eosinophilic infiltrate. Tumour extends to lateral surgical margin indicating incomplete excision. No evidence of lymphovascular invasion. Recommendation for re-excision or adjunctive therapy."
+    }
+  },
+  {
+    "case_id": "90002",
+    "processed_at": "2026-01-15T10:01:00Z",
+    "source_file": "90002-SP-demo.json",
+    "data": {
+      "summary": "Twelve-year-old female spayed Domestic Shorthair with oral squamous cell carcinoma of the mandibular gingiva. Moderately differentiated with bone invasion.",
+      "report_metadata": {
+        "case_id": "90002",
+        "report_type": "SP",
+        "filenames": ["90002_SP_report.txt"],
+        "pathologists": ["Dr. A. Demo"],
+        "typed_by": ["Tech Demo"],
+        "date_received": "2026-01-18",
+        "date_of_surgery": "2026-01-16",
+        "accession_id": "",
+        "previous_case_id": "",
+        "referring_veterinarian": "Dr. C. Sample",
+        "external_reference": ""
+      },
+      "animal_details": {
+        "species": "Feline",
+        "breed": "Domestic Shorthair",
+        "age": 12,
+        "sex": "Female",
+        "neutered": "yes",
+        "owner": "Demo Owner",
+        "animal_name": "Whiskers",
+        "bodyweight": 4
+      },
+      "clinical_details": {
+        "clinical_diagnosis": "Oral mass, suspected neoplasia",
+        "clinical_suspicion": "Squamous cell carcinoma",
+        "histopathology_request": "Confirm diagnosis",
+        "other": {},
+        "clinical_details_keywords": ["oral mass", "gingiva", "neoplasia"]
+      },
+      "gross_findings": {
+        "tissue_samples": [
+          {"block_id": "A1", "tissue_type": "gingiva and bone", "description": "Ulcerated, firm mass arising from right mandibular gingiva, 1.5 cm, adherent to underlying bone"}
+        ],
+        "other": {},
+        "gross_findings_keywords": ["ulcerated", "oral", "mandible"]
+      },
+      "histopathology": {
+        "description": "Infiltrative epithelial neoplasm composed of islands and cords of squamous epithelial cells with central keratinisation. Cells show moderate pleomorphism with prominent nucleoli. Occasional dyskeratotic cells. Invasion of underlying alveolar bone noted. Mitotic count 8 per 10 HPF.",
+        "diagnosis": "Oral squamous cell carcinoma, moderately differentiated",
+        "tumor_type": "squamous cell carcinoma",
+        "tumor_location": "mandibular gingiva",
+        "tumor_size": "1.5 cm",
+        "morphological_features": {
+          "cell_size": "variable",
+          "cell_shape": "polygonal",
+          "nuclear_characteristics": "moderate pleomorphism, prominent nucleoli",
+          "mitotic_figures": "8 per 10 HPF",
+          "necrosis": "focal"
+        },
+        "stains": [{"stain_name": "H&E", "result": "diagnostic"}],
+        "immunohistochemistry": {"markers_used": [], "results": []},
+        "other": {},
+        "histopathology_keywords": ["squamous cell carcinoma", "oral", "bone invasion", "keratinisation"]
+      },
+      "bacteriology": {"results": [], "other": {}, "bacteriology_keywords": []},
+      "comment": "Moderately differentiated squamous cell carcinoma with bone invasion. Prognosis is guarded. Feline oral SCC is typically aggressive with limited treatment options.",
+      "case_keywords": ["squamous cell carcinoma", "oral", "feline", "bone invasion"],
+      "rag_summary": "Twelve-year-old female spayed Domestic Shorthair with ulcerated firm mass right mandibular gingiva 1.5 cm. Histopathology confirms moderately differentiated squamous cell carcinoma. Infiltrative epithelial neoplasm with central keratinisation, moderate pleomorphism, prominent nucleoli. Invasion of underlying alveolar bone. Mitotic count 8 per 10 HPF. Focal necrosis. Prognosis guarded due to aggressive biological behaviour of feline oral SCC."
+    }
+  },
+  {
+    "case_id": "90003",
+    "processed_at": "2026-01-15T10:02:00Z",
+    "source_file": "90003-SP-demo.json",
+    "data": {
+      "summary": "Six-year-old male entire German Shepherd with splenic haemangiosarcoma. Ruptured with haemoabdomen.",
+      "report_metadata": {
+        "case_id": "90003",
+        "report_type": "SP",
+        "filenames": ["90003_SP_report.txt"],
+        "pathologists": ["Dr. A. Demo"],
+        "typed_by": ["Tech Demo"],
+        "date_received": "2026-02-05",
+        "date_of_surgery": "2026-02-03",
+        "accession_id": "",
+        "previous_case_id": "",
+        "referring_veterinarian": "Dr. D. Practice",
+        "external_reference": ""
+      },
+      "animal_details": {"species": "Canine", "breed": "German Shepherd", "age": 6, "sex": "Male", "neutered": "no", "owner": "Demo Owner", "animal_name": "Rex", "bodyweight": 38},
+      "clinical_details": {"clinical_diagnosis": "Splenic mass, haemoabdomen", "clinical_suspicion": "Haemangiosarcoma", "histopathology_request": "Confirm diagnosis", "other": {}, "clinical_details_keywords": ["splenic mass", "haemoabdomen"]},
+      "gross_findings": {"tissue_samples": [{"block_id": "A1", "tissue_type": "spleen", "description": "Enlarged spleen with 8 cm ruptured dark red mass, extensive haemorrhage"}], "other": {}, "gross_findings_keywords": ["spleen", "ruptured", "haemorrhage"]},
+      "histopathology": {
+        "description": "Poorly demarcated vascular neoplasm within splenic parenchyma. Neoplastic cells form irregular vascular channels lined by plump endothelial cells with marked nuclear atypia. Extensive haemorrhage and necrosis. Mitotic count 12 per 10 HPF.",
+        "diagnosis": "Splenic haemangiosarcoma",
+        "tumor_type": "haemangiosarcoma",
+        "tumor_location": "spleen",
+        "tumor_size": "8 cm",
+        "morphological_features": {"cell_size": "variable", "cell_shape": "spindle to polygonal", "nuclear_characteristics": "marked atypia", "mitotic_figures": "12 per 10 HPF", "necrosis": "extensive"},
+        "stains": [{"stain_name": "H&E", "result": "diagnostic"}],
+        "immunohistochemistry": {"markers_used": [], "results": []},
+        "other": {},
+        "histopathology_keywords": ["haemangiosarcoma", "vascular", "splenic", "high mitotic rate"]
+      },
+      "bacteriology": {"results": [], "other": {}, "bacteriology_keywords": []},
+      "comment": "Splenic haemangiosarcoma confirmed. High-grade vascular malignancy with poor prognosis. Staging recommended to assess for metastatic disease.",
+      "case_keywords": ["haemangiosarcoma", "spleen", "canine", "vascular tumour", "haemoabdomen"],
+      "rag_summary": "Six-year-old male entire German Shepherd emergency splenectomy for ruptured splenic mass with haemoabdomen. Histopathology confirms haemangiosarcoma. Poorly demarcated vascular neoplasm with irregular channels lined by atypical endothelial cells. Extensive haemorrhage and necrosis. Mitotic count 12 per 10 HPF. Poor prognosis. Staging recommended for metastatic assessment particularly right atrium liver and lungs."
+    }
+  },
+  {
+    "case_id": "90004",
+    "processed_at": "2026-01-15T10:03:00Z",
+    "source_file": "90004-SP-demo.json",
+    "data": {
+      "summary": "Three-year-old female spayed Labrador Retriever with cutaneous histiocytoma of the pinna. Typical regressing histiocytoma with lymphocytic infiltrate.",
+      "report_metadata": {"case_id": "90004", "report_type": "SP", "filenames": ["90004_SP_report.txt"], "pathologists": ["Dr. A. Demo"], "typed_by": ["Tech Demo"], "date_received": "2026-02-20", "date_of_surgery": "2026-02-18", "accession_id": "", "previous_case_id": "", "referring_veterinarian": "Dr. E. Vet", "external_reference": ""},
+      "animal_details": {"species": "Canine", "breed": "Labrador Retriever", "age": 3, "sex": "Female", "neutered": "yes", "owner": "Demo Owner", "animal_name": "Bella", "bodyweight": 28},
+      "clinical_details": {"clinical_diagnosis": "Cutaneous nodule, pinna", "clinical_suspicion": "Histiocytoma", "histopathology_request": "Confirm diagnosis", "other": {}, "clinical_details_keywords": ["skin nodule", "pinna", "ear"]},
+      "gross_findings": {"tissue_samples": [{"block_id": "A1", "tissue_type": "skin", "description": "Dome-shaped, erythematous nodule 1 cm on left pinna"}], "other": {}, "gross_findings_keywords": ["dome-shaped", "pinna", "nodule"]},
+      "histopathology": {
+        "description": "Well-circumscribed dermal proliferation of round cells with abundant pale cytoplasm and bean-shaped nuclei. Prominent infiltration by small lymphocytes at the tumour periphery consistent with regression.",
+        "diagnosis": "Cutaneous histiocytoma, regressing",
+        "tumor_type": "histiocytoma", "tumor_location": "pinna", "tumor_size": "1 cm",
+        "morphological_features": {"cell_size": "large", "cell_shape": "round", "nuclear_characteristics": "bean-shaped, low atypia", "mitotic_figures": "2 per 10 HPF", "necrosis": "absent"},
+        "stains": [{"stain_name": "H&E", "result": "diagnostic"}], "immunohistochemistry": {"markers_used": [], "results": []}, "other": {},
+        "histopathology_keywords": ["histiocytoma", "regressing", "lymphocytic infiltrate"]
+      },
+      "bacteriology": {"results": [], "other": {}, "bacteriology_keywords": []},
+      "comment": "Typical canine cutaneous histiocytoma with evidence of immune-mediated regression. Benign tumour with excellent prognosis. No further treatment required.",
+      "case_keywords": ["histiocytoma", "benign", "canine", "pinna", "regressing"],
+      "rag_summary": "Three-year-old female spayed Labrador Retriever dome-shaped erythematous nodule left pinna 1 cm. Cutaneous histiocytoma with regression. Well-circumscribed dermal round cell proliferation with pale cytoplasm and bean-shaped nuclei. Prominent peripheral lymphocytic infiltrate consistent with immune-mediated regression. Low mitotic count 2 per 10 HPF. Benign neoplasm excellent prognosis no treatment required."
+    }
+  },
+  {
+    "case_id": "90005",
+    "processed_at": "2026-01-15T10:04:00Z",
+    "source_file": "90005-SP-demo.json",
+    "data": {
+      "summary": "Nine-year-old male neutered Golden Retriever with subcutaneous soft tissue sarcoma (fibrosarcoma) on the thoracic wall. Low-grade, complete excision.",
+      "report_metadata": {"case_id": "90005", "report_type": "SP", "filenames": ["90005_SP_report.txt"], "pathologists": ["Dr. A. Demo"], "typed_by": ["Tech Demo"], "date_received": "2026-03-01", "date_of_surgery": "2026-02-27", "accession_id": "", "previous_case_id": "", "referring_veterinarian": "Dr. F. Smith", "external_reference": ""},
+      "animal_details": {"species": "Canine", "breed": "Golden Retriever", "age": 9, "sex": "Male", "neutered": "yes", "owner": "Demo Owner", "animal_name": "Charlie", "bodyweight": 35},
+      "clinical_details": {"clinical_diagnosis": "Subcutaneous mass, thoracic wall", "clinical_suspicion": "Soft tissue sarcoma", "histopathology_request": "Confirm diagnosis, grade, assess margins", "other": {}, "clinical_details_keywords": ["subcutaneous mass", "thorax"]},
+      "gross_findings": {"tissue_samples": [{"block_id": "A1-A3", "tissue_type": "subcutis and skeletal muscle", "description": "Firm, lobulated mass 4 cm, well-demarcated, grey-white on cut surface"}], "other": {}, "gross_findings_keywords": ["firm", "lobulated", "thoracic wall"]},
+      "histopathology": {
+        "description": "Well-circumscribed subcutaneous spindle cell neoplasm with interlacing fascicles of fibroblasts in a collagenous stroma. Mild nuclear atypia. Mitotic count 3 per 10 HPF. Complete excision with 5 mm margins.",
+        "diagnosis": "Subcutaneous fibrosarcoma, grade I (low grade)",
+        "tumor_type": "fibrosarcoma", "tumor_location": "thoracic wall, subcutis", "tumor_size": "4 cm",
+        "morphological_features": {"cell_size": "moderate", "cell_shape": "spindle", "nuclear_characteristics": "mild atypia", "mitotic_figures": "3 per 10 HPF", "necrosis": "absent"},
+        "stains": [{"stain_name": "H&E", "result": "diagnostic"}], "immunohistochemistry": {"markers_used": [], "results": []}, "other": {},
+        "histopathology_keywords": ["fibrosarcoma", "low grade", "complete excision", "spindle cell"]
+      },
+      "bacteriology": {"results": [], "other": {}, "bacteriology_keywords": []},
+      "comment": "Low-grade fibrosarcoma, completely excised. Good prognosis with wide local excision. Recurrence possible if margins narrow in future excisions.",
+      "case_keywords": ["fibrosarcoma", "soft tissue sarcoma", "low grade", "canine", "complete excision"],
+      "rag_summary": "Nine-year-old male neutered Golden Retriever subcutaneous mass thoracic wall 4 cm. Histopathology confirms grade I fibrosarcoma. Well-circumscribed spindle cell neoplasm interlacing fascicles fibroblasts in collagenous stroma. Mild nuclear atypia mitotic count 3 per 10 HPF. No necrosis. Complete excision with 5 mm margins. Good prognosis."
+    }
+  },
+  {
+    "case_id": "90006",
+    "processed_at": "2026-01-15T10:05:00Z",
+    "source_file": "90006-SP-demo.json",
+    "data": {
+      "summary": "Seven-year-old female entire Thoroughbred with equine sarcoid, fibroblastic type, on the medial thigh. Multiple nodular lesions.",
+      "report_metadata": {"case_id": "90006", "report_type": "SP", "filenames": ["90006_SP_report.txt"], "pathologists": ["Dr. A. Demo"], "typed_by": ["Tech Demo"], "date_received": "2026-03-15", "date_of_surgery": "2026-03-12", "accession_id": "", "previous_case_id": "", "referring_veterinarian": "Dr. G. Equine", "external_reference": ""},
+      "animal_details": {"species": "Equine", "breed": "Thoroughbred", "age": 7, "sex": "Female", "neutered": "no", "owner": "Demo Owner", "animal_name": "Star", "bodyweight": 480},
+      "clinical_details": {"clinical_diagnosis": "Multiple skin nodules, suspected equine sarcoid", "clinical_suspicion": "Equine sarcoid", "histopathology_request": "Confirm diagnosis", "other": {}, "clinical_details_keywords": ["sarcoid", "equine", "multiple nodules"]},
+      "gross_findings": {"tissue_samples": [{"block_id": "A1", "tissue_type": "skin", "description": "Three firm, ulcerated nodules up to 3 cm, medial left thigh"}], "other": {}, "gross_findings_keywords": ["ulcerated", "nodules", "thigh"]},
+      "histopathology": {
+        "description": "Fibroblastic proliferation within dermis and subcutis with overlying epidermal hyperplasia and characteristic rete peg formation. Spindle-shaped fibroblasts arranged in whorls and interlacing bundles. Epidermal-dermal interface shows typical picket-fence pattern of basal cells.",
+        "diagnosis": "Equine sarcoid, fibroblastic type",
+        "tumor_type": "equine sarcoid", "tumor_location": "medial thigh", "tumor_size": "up to 3 cm",
+        "morphological_features": {"cell_size": "moderate", "cell_shape": "spindle", "nuclear_characteristics": "bland", "mitotic_figures": "1 per 10 HPF", "necrosis": "absent"},
+        "stains": [{"stain_name": "H&E", "result": "diagnostic"}], "immunohistochemistry": {"markers_used": [], "results": []}, "other": {},
+        "histopathology_keywords": ["equine sarcoid", "fibroblastic", "rete pegs", "picket fence"]
+      },
+      "bacteriology": {"results": [], "other": {}, "bacteriology_keywords": []},
+      "comment": "Fibroblastic sarcoid confirmed. Bovine papillomavirus associated. Multiple treatment options available including surgical excision, cryotherapy, or topical chemotherapy.",
+      "case_keywords": ["equine sarcoid", "fibroblastic", "equine", "bovine papillomavirus", "skin"],
+      "rag_summary": "Seven-year-old female Thoroughbred multiple firm ulcerated nodules medial left thigh up to 3 cm. Histopathology confirms fibroblastic equine sarcoid. Dermal and subcutaneous fibroblastic proliferation with epidermal hyperplasia and characteristic rete peg formation. Picket-fence pattern of basal cells at epidermal-dermal interface. Spindle-shaped fibroblasts in whorls. Bovine papillomavirus associated lesion."
+    }
+  },
+  {
+    "case_id": "90007",
+    "processed_at": "2026-01-15T10:06:00Z",
+    "source_file": "90007-SP-demo.json",
+    "data": {
+      "summary": "Fourteen-year-old male neutered Cocker Spaniel with perianal gland adenoma. Benign, completely excised.",
+      "report_metadata": {"case_id": "90007", "report_type": "SP", "filenames": ["90007_SP_report.txt"], "pathologists": ["Dr. A. Demo"], "typed_by": ["Tech Demo"], "date_received": "2026-04-01", "date_of_surgery": "2026-03-29", "accession_id": "", "previous_case_id": "", "referring_veterinarian": "Dr. H. Jones", "external_reference": ""},
+      "animal_details": {"species": "Canine", "breed": "Cocker Spaniel", "age": 14, "sex": "Male", "neutered": "yes", "owner": "Demo Owner", "animal_name": "Toby", "bodyweight": 13},
+      "clinical_details": {"clinical_diagnosis": "Perianal mass", "clinical_suspicion": "Perianal gland tumour", "histopathology_request": "Confirm diagnosis", "other": {}, "clinical_details_keywords": ["perianal", "mass"]},
+      "gross_findings": {"tissue_samples": [{"block_id": "A1", "tissue_type": "perianal tissue", "description": "Lobulated, well-demarcated firm nodule 2 cm, perianal region"}], "other": {}, "gross_findings_keywords": ["perianal", "lobulated"]},
+      "histopathology": {
+        "description": "Well-circumscribed, encapsulated neoplasm composed of hepatoid cells arranged in lobules separated by fibrovascular stroma. Cells are large and polygonal with abundant eosinophilic cytoplasm. Uniform nuclei with low mitotic activity.",
+        "diagnosis": "Perianal gland adenoma (hepatoid gland adenoma)",
+        "tumor_type": "perianal gland adenoma", "tumor_location": "perianal", "tumor_size": "2 cm",
+        "morphological_features": {"cell_size": "large", "cell_shape": "polygonal", "nuclear_characteristics": "uniform, low atypia", "mitotic_figures": "<1 per 10 HPF", "necrosis": "absent"},
+        "stains": [{"stain_name": "H&E", "result": "diagnostic"}], "immunohistochemistry": {"markers_used": [], "results": []}, "other": {},
+        "histopathology_keywords": ["perianal gland adenoma", "hepatoid", "benign"]
+      },
+      "bacteriology": {"results": [], "other": {}, "bacteriology_keywords": []},
+      "comment": "Benign perianal gland adenoma, completely excised. Castration reduces recurrence risk in intact males. Excellent prognosis.",
+      "case_keywords": ["perianal gland adenoma", "hepatoid", "benign", "canine"],
+      "rag_summary": "Fourteen-year-old male neutered Cocker Spaniel perianal lobulated nodule 2 cm. Perianal gland adenoma hepatoid type. Well-circumscribed encapsulated neoplasm of hepatoid cells in lobules. Large polygonal cells abundant eosinophilic cytoplasm. Uniform nuclei low mitotic activity. Completely excised. Benign excellent prognosis."
+    }
+  },
+  {
+    "case_id": "90008",
+    "processed_at": "2026-01-15T10:07:00Z",
+    "source_file": "90008-SP-demo.json",
+    "data": {
+      "summary": "Five-year-old female spayed Staffordshire Bull Terrier with digital melanoma. Amelanotic, high mitotic rate.",
+      "report_metadata": {"case_id": "90008", "report_type": "SP", "filenames": ["90008_SP_report.txt"], "pathologists": ["Dr. A. Demo"], "typed_by": ["Tech Demo"], "date_received": "2026-04-10", "date_of_surgery": "2026-04-08", "accession_id": "", "previous_case_id": "", "referring_veterinarian": "Dr. I. Walker", "external_reference": ""},
+      "animal_details": {"species": "Canine", "breed": "Staffordshire Bull Terrier", "age": 5, "sex": "Female", "neutered": "yes", "owner": "Demo Owner", "animal_name": "Luna", "bodyweight": 18},
+      "clinical_details": {"clinical_diagnosis": "Digital mass, third digit right forelimb", "clinical_suspicion": "Neoplasia, possible melanoma", "histopathology_request": "Confirm diagnosis", "other": {}, "clinical_details_keywords": ["digital mass", "digit", "melanoma"]},
+      "gross_findings": {"tissue_samples": [{"block_id": "A1-A2", "tissue_type": "digit (amputated)", "description": "Swollen third digit with 2.5 cm firm mass, destruction of P3 on radiographs"}], "other": {}, "gross_findings_keywords": ["digit", "bone lysis", "amputation"]},
+      "histopathology": {
+        "description": "Infiltrative neoplasm of amelanotic epithelioid and spindle cells replacing normal digital structures including bone. Marked nuclear pleomorphism with prominent nucleoli. Mitotic count 18 per 10 HPF with atypical mitoses. No melanin pigment identified on H&E or Fontana-Masson stain.",
+        "diagnosis": "Digital amelanotic melanoma, high grade",
+        "tumor_type": "melanoma", "tumor_location": "third digit, right forelimb", "tumor_size": "2.5 cm",
+        "morphological_features": {"cell_size": "large", "cell_shape": "epithelioid and spindle", "nuclear_characteristics": "marked pleomorphism, prominent nucleoli, atypical mitoses", "mitotic_figures": "18 per 10 HPF", "necrosis": "multifocal"},
+        "stains": [{"stain_name": "H&E", "result": "diagnostic"}, {"stain_name": "Fontana-Masson", "result": "negative"}], "immunohistochemistry": {"markers_used": [], "results": []}, "other": {},
+        "histopathology_keywords": ["melanoma", "amelanotic", "digital", "high grade", "bone invasion"]
+      },
+      "bacteriology": {"results": [], "other": {}, "bacteriology_keywords": []},
+      "comment": "High-grade amelanotic digital melanoma with bone destruction. Aggressive biological behaviour expected. Staging recommended. Melan-A and PNL2 immunohistochemistry recommended for confirmation.",
+      "case_keywords": ["melanoma", "amelanotic", "digital", "canine", "high grade", "bone lysis"],
+      "rag_summary": "Five-year-old female spayed Staffordshire Bull Terrier swollen third digit right forelimb 2.5 cm mass with P3 destruction on radiographs. Digit amputation. High-grade amelanotic melanoma. Infiltrative epithelioid and spindle cell neoplasm with marked pleomorphism prominent nucleoli. Mitotic count 18 per 10 HPF with atypical mitoses. Fontana-Masson negative confirming amelanotic. Multifocal necrosis. Bone invasion. Aggressive behaviour expected staging recommended."
+    }
+  },
+  {
+    "case_id": "90009",
+    "processed_at": "2026-01-15T10:08:00Z",
+    "source_file": "90009-PM-demo.json",
+    "data": {
+      "summary": "Two-year-old female entire Welsh Cob found dead at pasture. Post-mortem findings consistent with equine grass sickness (equine dysautonomia). Acute presentation.",
+      "report_metadata": {"case_id": "90009", "report_type": "PM", "filenames": ["90009_PM_report.txt"], "pathologists": ["Dr. A. Demo"], "typed_by": ["Tech Demo"], "date_received": "2026-04-25", "date_of_necropsy": "2026-04-25", "accession_id": "", "previous_case_id": "", "referring_veterinarian": "Dr. J. Field", "external_reference": ""},
+      "animal_details": {"species": "Equine", "breed": "Welsh Cob", "age": 2, "sex": "Female", "neutered": "no", "owner": "Demo Owner", "animal_name": "Blaze", "bodyweight": 380},
+      "clinical_history": {"time_of_discovery": "2026-04-24", "time_of_euthanasia": "", "condition_at_discovery": "Found dead at pasture", "examination_details": "Mare found recumbent, deceased, estimated dead 6-12 hours", "treatment_attempts": "None, found dead", "cause_of_death": "Equine grass sickness (dysautonomia)", "other": {}, "clinical_history_keywords": ["found dead", "pasture"]},
+      "gross_findings": {
+        "external_examination": {"observations": {"signs_of_death": "Rigor mortis present, mild bloating", "cadaver_description": "Body condition score 3/5, well-muscled", "skin_observations": "No external lesions", "subcutis_observations": "Adequate subcutaneous fat"}, "other": {}, "external_examination_keywords": ["rigor mortis"]},
+        "internal_examination": {"observations": {"cranial_cavity": "No abnormalities detected", "thoracic_cavity": "Mild pleural effusion, lungs congested", "abdominal_cavity": "Markedly distended stomach and small intestine with fluid content. Caecum and large colon impacted with dry digesta. Ptosis of large colon.", "pelvic_cavity": "No abnormalities detected", "muscular_system": "No abnormalities detected", "skeletal_system": "No abnormalities detected", "nervous_system": "Not examined grossly", "cardiovascular_system": "Heart grossly normal", "respiratory_system": "Congested lungs", "gastrointestinal_tract": "Gastric distension, small intestinal distension, large colon impaction", "urogenital_system": "No abnormalities detected", "lymphatic_system": "Mesenteric lymph nodes mildly enlarged", "endocrine_system": "No abnormalities detected"}, "other": {}, "internal_examination_keywords": ["gastric distension", "ileus", "colon impaction"]}
+      },
+      "histopathology": {
+        "observations": {"gastrointestinal_tract": "Neuronal degeneration and loss in submucosal and myenteric plexuses of stomach and small intestine. Chromatolysis of enteric neurons.", "nervous_system": "Neuronal degeneration in coeliac and cranial mesenteric ganglia with satellite cell proliferation"},
+        "stains": [{"stain_name": "H&E", "result": "diagnostic"}],
+        "immunohistochemistry": {"markers_used": [], "results": [], "immunohistochemistry_keywords": []},
+        "other": {},
+        "histopathology_keywords": ["neuronal degeneration", "chromatolysis", "enteric plexus", "dysautonomia"]
+      },
+      "bacteriology": {"samples": [{"sample_site": "small_intestine", "result": "No significant growth"}], "other": {}, "bacteriology_keywords": []},
+      "comment": "Post-mortem findings are consistent with acute equine grass sickness (equine dysautonomia). Characteristic neuronal degeneration in autonomic ganglia and enteric nervous system with gastrointestinal ileus.",
+      "addendum": [],
+      "case_keywords": ["grass sickness", "equine dysautonomia", "equine", "neuronal degeneration", "ileus", "found dead"],
+      "rag_summary": "Two-year-old female Welsh Cob found dead at pasture April. Post-mortem confirms acute equine grass sickness equine dysautonomia. Markedly distended stomach and small intestine with fluid. Large colon impacted with dry digesta and ptosis. Histopathology shows neuronal degeneration and loss in submucosal and myenteric plexuses. Chromatolysis of enteric neurons. Neuronal degeneration in coeliac and cranial mesenteric ganglia with satellite cell proliferation. Spring onset typical for grass sickness."
+    }
+  },
+  {
+    "case_id": "90010",
+    "processed_at": "2026-01-15T10:09:00Z",
+    "source_file": "90010-PM-demo.json",
+    "data": {
+      "summary": "Ten-year-old male neutered Domestic Shorthair euthanised due to progressive weight loss and icterus. Post-mortem reveals hepatic lymphoma with biliary obstruction.",
+      "report_metadata": {"case_id": "90010", "report_type": "PM", "filenames": ["90010_PM_report.txt"], "pathologists": ["Dr. A. Demo"], "typed_by": ["Tech Demo"], "date_received": "2026-05-02", "date_of_necropsy": "2026-05-02", "accession_id": "", "previous_case_id": "", "referring_veterinarian": "Dr. K. Feline", "external_reference": ""},
+      "animal_details": {"species": "Feline", "breed": "Domestic Shorthair", "age": 10, "sex": "Male", "neutered": "yes", "owner": "Demo Owner", "animal_name": "Jasper", "bodyweight": 3},
+      "clinical_history": {"time_of_discovery": "", "time_of_euthanasia": "2026-05-01", "condition_at_discovery": "", "examination_details": "Progressive weight loss over 3 months, icterus developing over 2 weeks, inappetence", "treatment_attempts": "Supportive care, appetite stimulants", "cause_of_death": "Euthanasia - hepatic lymphoma", "other": {}, "clinical_history_keywords": ["weight loss", "icterus", "inappetence"]},
+      "gross_findings": {
+        "external_examination": {"observations": {"signs_of_death": "Euthanasia", "cadaver_description": "Emaciated, BCS 1.5/5, icteric mucous membranes", "skin_observations": "Icteric skin", "subcutis_observations": "Markedly reduced subcutaneous fat"}, "other": {}, "external_examination_keywords": ["emaciated", "icteric"]},
+        "internal_examination": {"observations": {"cranial_cavity": "No abnormalities", "thoracic_cavity": "No effusion", "abdominal_cavity": "Mild ascites", "pelvic_cavity": "No abnormalities", "muscular_system": "Generalised muscle wasting", "skeletal_system": "No abnormalities", "nervous_system": "Not examined", "cardiovascular_system": "No abnormalities", "respiratory_system": "No abnormalities", "gastrointestinal_tract": "Diffusely icteric", "urogenital_system": "Kidneys pale, icteric", "lymphatic_system": "Mesenteric and hepatic lymph nodes markedly enlarged, pale", "endocrine_system": "No abnormalities"}, "other": {}, "internal_examination_keywords": ["icterus", "lymphadenopathy", "hepatomegaly"]}
+      },
+      "histopathology": {
+        "observations": {"lymphatic_system": "Diffuse infiltration of liver parenchyma by sheets of large lymphoid cells with round nuclei and prominent nucleoli consistent with large cell lymphoma. Biliary obstruction secondary to periportal infiltration.", "gastrointestinal_tract": "Mild lymphoid infiltration of intestinal lamina propria"},
+        "stains": [{"stain_name": "H&E", "result": "diagnostic"}],
+        "immunohistochemistry": {"markers_used": [], "results": [], "immunohistochemistry_keywords": []},
+        "other": {},
+        "histopathology_keywords": ["lymphoma", "hepatic", "large cell", "biliary obstruction"]
+      },
+      "bacteriology": {"samples": [], "other": {}, "bacteriology_keywords": []},
+      "comment": "Hepatic large cell lymphoma with secondary biliary obstruction causing icterus. FeLV/FIV status unknown. Immunophenotyping recommended for classification.",
+      "addendum": [],
+      "case_keywords": ["lymphoma", "hepatic", "feline", "icterus", "biliary obstruction"],
+      "rag_summary": "Ten-year-old male neutered DSH euthanised progressive weight loss and icterus over 3 months. Post-mortem reveals hepatic large cell lymphoma. Diffuse infiltration of liver by sheets of large lymphoid cells with round nuclei and prominent nucleoli. Secondary biliary obstruction from periportal infiltration causing icterus. Mesenteric and hepatic lymph nodes markedly enlarged. Mild ascites. Emaciated BCS 1.5 of 5. FeLV FIV status unknown."
+    }
+  },
+  {
+    "case_id": "90011",
+    "processed_at": "2026-01-15T10:10:00Z",
+    "source_file": "90011-PM-demo.json",
+    "data": {
+      "summary": "Four-year-old male neutered French Bulldog died under anaesthesia. Post-mortem reveals severe brachycephalic obstructive airway syndrome with secondary pulmonary oedema.",
+      "report_metadata": {"case_id": "90011", "report_type": "PM", "filenames": ["90011_PM_report.txt"], "pathologists": ["Dr. A. Demo"], "typed_by": ["Tech Demo"], "date_received": "2026-05-15", "date_of_necropsy": "2026-05-15", "accession_id": "", "previous_case_id": "", "referring_veterinarian": "Dr. L. Surgery", "external_reference": ""},
+      "animal_details": {"species": "Canine", "breed": "French Bulldog", "age": 4, "sex": "Male", "neutered": "yes", "owner": "Demo Owner", "animal_name": "Hugo", "bodyweight": 14},
+      "clinical_history": {"time_of_discovery": "", "time_of_euthanasia": "", "condition_at_discovery": "Cardiac arrest during routine dental procedure under general anaesthesia", "examination_details": "Failed resuscitation attempts. History of chronic stertor and exercise intolerance.", "treatment_attempts": "CPR for 20 minutes, adrenaline, atropine", "cause_of_death": "Cardiopulmonary arrest during anaesthesia, brachycephalic airway syndrome", "other": {}, "clinical_history_keywords": ["anaesthetic death", "brachycephalic", "cardiac arrest"]},
+      "gross_findings": {
+        "external_examination": {"observations": {"signs_of_death": "Recent death, no rigor", "cadaver_description": "Obese, BCS 4/5", "skin_observations": "No external lesions", "subcutis_observations": "Excessive subcutaneous fat"}, "other": {}, "external_examination_keywords": ["obese"]},
+        "internal_examination": {"observations": {"cranial_cavity": "No abnormalities", "thoracic_cavity": "Marked pulmonary oedema and congestion", "abdominal_cavity": "Hepatic congestion", "pelvic_cavity": "No abnormalities", "muscular_system": "No abnormalities", "skeletal_system": "No abnormalities", "nervous_system": "Not examined", "cardiovascular_system": "Heart grossly normal, no valvular disease", "respiratory_system": "Elongated soft palate extending 1.5 cm past epiglottis. Stenotic nares. Everted laryngeal saccules. Hypoplastic trachea. Severe pulmonary oedema with pink frothy fluid.", "gastrointestinal_tract": "No significant findings", "urogenital_system": "No significant findings", "lymphatic_system": "No significant findings", "endocrine_system": "No significant findings"}, "other": {}, "internal_examination_keywords": ["brachycephalic airway", "pulmonary oedema", "elongated soft palate", "stenotic nares"]}
+      },
+      "histopathology": {
+        "observations": {"respiratory_system": "Severe alveolar oedema with intra-alveolar proteinaceous fluid. Pulmonary congestion. Laryngeal mucosal oedema.", "cardiovascular_system": "No myocardial pathology identified"},
+        "stains": [{"stain_name": "H&E", "result": "diagnostic"}],
+        "immunohistochemistry": {"markers_used": [], "results": [], "immunohistochemistry_keywords": []},
+        "other": {},
+        "histopathology_keywords": ["pulmonary oedema", "brachycephalic", "airway obstruction"]
+      },
+      "bacteriology": {"samples": [], "other": {}, "bacteriology_keywords": []},
+      "comment": "Death attributable to brachycephalic obstructive airway syndrome with secondary severe pulmonary oedema during general anaesthesia. Contributing factors include obesity and hypoplastic trachea.",
+      "addendum": [],
+      "case_keywords": ["brachycephalic airway syndrome", "anaesthetic death", "pulmonary oedema", "canine", "french bulldog"],
+      "rag_summary": "Four-year-old male neutered French Bulldog cardiac arrest during routine dental procedure under general anaesthesia. Failed CPR. Post-mortem reveals severe brachycephalic obstructive airway syndrome. Elongated soft palate extending 1.5 cm past epiglottis. Stenotic nares. Everted laryngeal saccules. Hypoplastic trachea. Severe pulmonary oedema with pink frothy fluid. Obese BCS 4 of 5. Heart grossly normal. Death attributable to upper airway obstruction exacerbated by anaesthesia and obesity."
+    }
+  },
+  {
+    "case_id": "90012",
+    "processed_at": "2026-01-15T10:11:00Z",
+    "source_file": "90012-PM-demo.json",
+    "data": {
+      "summary": "Eighteen-month-old male Holstein-Friesian calf. Sudden death. Post-mortem reveals clostridial enterotoxaemia (pulpy kidney disease).",
+      "report_metadata": {"case_id": "90012", "report_type": "PM", "filenames": ["90012_PM_report.txt"], "pathologists": ["Dr. A. Demo"], "typed_by": ["Tech Demo"], "date_received": "2026-06-01", "date_of_necropsy": "2026-06-01", "accession_id": "", "previous_case_id": "", "referring_veterinarian": "Dr. M. Farm", "external_reference": ""},
+      "animal_details": {"species": "Bovine", "breed": "Holstein-Friesian", "age": 1, "sex": "Male", "neutered": "no", "owner": "Demo Farm", "animal_name": "", "bodyweight": 250},
+      "clinical_history": {"time_of_discovery": "2026-05-31", "time_of_euthanasia": "", "condition_at_discovery": "Found dead in pen, well-conditioned", "examination_details": "No prior illness noted. On high-concentrate diet.", "treatment_attempts": "None, found dead", "cause_of_death": "Clostridial enterotoxaemia", "other": {}, "clinical_history_keywords": ["sudden death", "concentrate diet"]},
+      "gross_findings": {
+        "external_examination": {"observations": {"signs_of_death": "Rapid post-mortem decomposition", "cadaver_description": "Good body condition", "skin_observations": "No lesions", "subcutis_observations": "Adequate fat"}, "other": {}, "external_examination_keywords": ["rapid decomposition"]},
+        "internal_examination": {"observations": {"cranial_cavity": "Not examined", "thoracic_cavity": "Pericardial effusion", "abdominal_cavity": "Serosanguinous peritoneal fluid", "pelvic_cavity": "No abnormalities", "muscular_system": "No abnormalities", "skeletal_system": "No abnormalities", "nervous_system": "Not examined", "cardiovascular_system": "Pericardial effusion, petechial haemorrhages on epicardium", "respiratory_system": "Pulmonary congestion and oedema", "gastrointestinal_tract": "Small intestinal haemorrhage, congested mucosa. Caecum and large intestine fluid-filled.", "urogenital_system": "Kidneys soft, pulpy consistency, rapid autolysis", "lymphatic_system": "Mesenteric lymph nodes congested", "endocrine_system": "No significant findings"}, "other": {}, "internal_examination_keywords": ["pulpy kidney", "enteritis", "pericardial effusion"]}
+      },
+      "histopathology": {
+        "observations": {"urogenital_system": "Renal cortical necrosis with marked autolysis. Characteristic pulpy kidney changes.", "gastrointestinal_tract": "Haemorrhagic enteritis with large numbers of gram-positive rods in intestinal lumen"},
+        "stains": [{"stain_name": "H&E", "result": "diagnostic"}, {"stain_name": "Gram stain", "result": "Gram-positive rods in intestinal lumen"}],
+        "immunohistochemistry": {"markers_used": [], "results": [], "immunohistochemistry_keywords": []},
+        "other": {},
+        "histopathology_keywords": ["clostridial", "enterotoxaemia", "pulpy kidney", "renal necrosis"]
+      },
+      "bacteriology": {"samples": [{"sample_site": "small_intestine", "result": "Clostridium perfringens type D isolated"}], "other": {}, "bacteriology_keywords": ["clostridium perfringens"]},
+      "comment": "Findings consistent with clostridial enterotoxaemia (pulpy kidney disease) caused by Clostridium perfringens type D. Associated with high-concentrate diet. Vaccination review recommended for remaining herd.",
+      "addendum": [],
+      "case_keywords": ["clostridial enterotoxaemia", "pulpy kidney", "bovine", "sudden death", "clostridium perfringens"],
+      "rag_summary": "Eighteen-month-old male Holstein-Friesian calf found dead in pen on high-concentrate diet. Post-mortem confirms clostridial enterotoxaemia pulpy kidney disease. Kidneys soft pulpy with cortical necrosis. Haemorrhagic enteritis with gram-positive rods in intestinal lumen. Clostridium perfringens type D isolated. Pericardial effusion petechial epicardial haemorrhages. Serosanguinous peritoneal fluid. Rapid post-mortem decomposition consistent with clostridial infection."
+    }
+  },
+  {
+    "case_id": "90013",
+    "processed_at": "2026-01-15T10:12:00Z",
+    "source_file": "90013-PM-demo.json",
+    "data": {
+      "summary": "Six-year-old male neutered Labrador Retriever euthanised with suspected poisoning. Post-mortem reveals acute hepatic necrosis consistent with mushroom toxicosis (Amanita phalloides).",
+      "report_metadata": {"case_id": "90013", "report_type": "PM", "filenames": ["90013_PM_report.txt"], "pathologists": ["Dr. A. Demo"], "typed_by": ["Tech Demo"], "date_received": "2026-06-15", "date_of_necropsy": "2026-06-15", "accession_id": "", "previous_case_id": "", "referring_veterinarian": "Dr. N. Emergency", "external_reference": ""},
+      "animal_details": {"species": "Canine", "breed": "Labrador Retriever", "age": 6, "sex": "Male", "neutered": "yes", "owner": "Demo Owner", "animal_name": "Bear", "bodyweight": 33},
+      "clinical_history": {"time_of_discovery": "", "time_of_euthanasia": "2026-06-14", "condition_at_discovery": "", "examination_details": "Presented with acute vomiting, diarrhoea, and jaundice 48 hours after walk in woodland. Rapidly deteriorating liver enzymes. Owner reported possible mushroom ingestion.", "treatment_attempts": "IV fluid therapy, N-acetylcysteine, supportive care for 36 hours", "cause_of_death": "Euthanasia - fulminant hepatic failure", "other": {}, "clinical_history_keywords": ["mushroom ingestion", "hepatic failure", "vomiting", "jaundice"]},
+      "gross_findings": {
+        "external_examination": {"observations": {"signs_of_death": "Euthanasia", "cadaver_description": "Good body condition, icteric", "skin_observations": "Icteric", "subcutis_observations": "Normal"}, "other": {}, "external_examination_keywords": ["icteric"]},
+        "internal_examination": {"observations": {"cranial_cavity": "Not examined", "thoracic_cavity": "No abnormalities", "abdominal_cavity": "Icteric peritoneum", "pelvic_cavity": "No abnormalities", "muscular_system": "No abnormalities", "skeletal_system": "No abnormalities", "nervous_system": "Not examined", "cardiovascular_system": "No abnormalities", "respiratory_system": "No abnormalities", "gastrointestinal_tract": "Mild haemorrhagic gastroenteritis", "urogenital_system": "Kidneys mildly icteric", "lymphatic_system": "No significant findings", "endocrine_system": "No significant findings"}, "other": {}, "internal_examination_keywords": ["hepatic necrosis", "icterus", "liver"]}
+      },
+      "histopathology": {
+        "observations": {"gastrointestinal_tract": "Mild enteritis with mucosal congestion"},
+        "stains": [{"stain_name": "H&E", "result": "diagnostic"}],
+        "immunohistochemistry": {"markers_used": [], "results": [], "immunohistochemistry_keywords": []},
+        "other": {},
+        "histopathology_keywords": ["hepatic necrosis", "amatoxin", "mushroom toxicosis"]
+      },
+      "bacteriology": {"samples": [], "other": {}, "bacteriology_keywords": []},
+      "comment": "Acute massive hepatic necrosis consistent with amatoxin poisoning (Amanita phalloides). History of woodland walk with possible mushroom ingestion supports diagnosis. Toxicology confirmation recommended.",
+      "addendum": [],
+      "case_keywords": ["mushroom toxicosis", "amanita", "hepatic necrosis", "canine", "poisoning"],
+      "rag_summary": "Six-year-old male neutered Labrador Retriever euthanised fulminant hepatic failure 48 hours after woodland walk with possible mushroom ingestion. Post-mortem reveals massive acute hepatic necrosis. Liver markedly reduced and friable with diffuse centrilobular to massive coagulative necrosis. Icteric tissues throughout. History treatment and lesion distribution consistent with amatoxin poisoning Amanita phalloides. Haemorrhagic gastroenteritis. Supportive treatment with N-acetylcysteine unsuccessful."
+    }
+  },
+  {
+    "case_id": "90014",
+    "processed_at": "2026-01-15T10:13:00Z",
+    "source_file": "90014-IH-demo.json",
+    "data": {
+      "summary": "Eight-year-old male neutered Boxer. Immunohistochemistry panel on cutaneous mast cell tumour. c-Kit positive with cytoplasmic pattern. Ki67 index 15%.",
+      "report_metadata": {"case_id": "90014", "report_type": "IH", "filenames": ["90014_IH_report.txt"], "pathologists": ["Dr. A. Demo"], "typed_by": ["Tech Demo"], "date_received": "2026-01-20", "date_of_surgery": "2026-01-10", "accession_id": "", "previous_case_id": "90001", "referring_veterinarian": "Dr. B. Example", "external_reference": ""},
+      "animal_details": {"species": "Canine", "breed": "Boxer", "age": 8, "sex": "Male", "neutered": "yes", "owner": "Demo Owner", "animal_name": "Bruno", "bodyweight": 32},
+      "histopathology": {
+        "description": "Immunohistochemistry performed on previously diagnosed cutaneous mast cell tumour (case 90001).",
+        "diagnosis": "Mast cell tumour — c-Kit positive (cytoplasmic pattern), Ki67 index 15%",
+        "tumor_type": "mast cell tumour", "tumor_location": "skin, left forelimb", "tumor_size": "3 cm",
+        "morphological_features": {"cell_size": "moderate", "cell_shape": "round", "nuclear_characteristics": "as previously described", "mitotic_figures": "5 per 10 HPF", "necrosis": "absent"},
+        "stains": [],
+        "immunohistochemistry": {
+          "markers_used": ["c-Kit (CD117)", "Ki67"],
+          "results": [
+            {"marker": "c-Kit (CD117)", "observations": "Positive, cytoplasmic pattern (perimembranous and focal paranuclear)", "intensity": "strong", "distribution": "diffuse"},
+            {"marker": "Ki67", "observations": "Nuclear positivity in 15% of neoplastic cells", "intensity": "moderate", "distribution": "scattered"}
+          ]
+        },
+        "other": {},
+        "histopathology_keywords": ["c-kit", "ki67", "mast cell tumour", "immunohistochemistry"]
+      },
+      "comment": "c-Kit shows aberrant cytoplasmic localisation pattern (KIT pattern II/III), which may be associated with more aggressive behaviour and response to tyrosine kinase inhibitors. Ki67 index of 15% is above the prognostic threshold of 10.6%, suggesting a less favourable prognosis.",
+      "case_keywords": ["c-kit", "ki67", "mast cell tumour", "immunohistochemistry", "canine", "prognostic"],
+      "rag_summary": "Eight-year-old male neutered Boxer immunohistochemistry panel on cutaneous mast cell tumour. c-Kit CD117 positive with aberrant cytoplasmic pattern perimembranous and focal paranuclear KIT pattern II or III. Strong diffuse staining. Ki67 nuclear positivity in 15 percent of neoplastic cells above prognostic threshold of 10.6 percent. Aberrant c-Kit pattern associated with more aggressive behaviour and potential response to tyrosine kinase inhibitors such as toceranib or masitinib."
+    }
+  },
+  {
+    "case_id": "90015",
+    "processed_at": "2026-01-15T10:14:00Z",
+    "source_file": "90015-IH-demo.json",
+    "data": {
+      "summary": "Seven-year-old female spayed Domestic Shorthair. Immunohistochemistry on intestinal lymphoma. CD3 positive, CD79a negative, confirming T-cell lymphoma.",
+      "report_metadata": {"case_id": "90015", "report_type": "IH", "filenames": ["90015_IH_report.txt"], "pathologists": ["Dr. A. Demo"], "typed_by": ["Tech Demo"], "date_received": "2026-02-10", "date_of_surgery": "2026-02-05", "accession_id": "", "previous_case_id": "", "referring_veterinarian": "Dr. O. Internal", "external_reference": ""},
+      "animal_details": {"species": "Feline", "breed": "Domestic Shorthair", "age": 7, "sex": "Female", "neutered": "yes", "owner": "Demo Owner", "animal_name": "Mittens", "bodyweight": 3},
+      "histopathology": {
+        "description": "Immunophenotyping of previously diagnosed intestinal lymphoma. Transmural infiltration of small intestine by monomorphic lymphoid population.",
+        "diagnosis": "Intestinal T-cell lymphoma (CD3+, CD79a-, Pax5-)",
+        "tumor_type": "lymphoma", "tumor_location": "small intestine", "tumor_size": "diffuse",
+        "morphological_features": {"cell_size": "intermediate", "cell_shape": "round", "nuclear_characteristics": "uniform", "mitotic_figures": "moderate", "necrosis": "absent"},
+        "stains": [],
+        "immunohistochemistry": {
+          "markers_used": ["CD3", "CD79a", "Pax5", "Ki67"],
+          "results": [
+            {"marker": "CD3", "observations": "Strong membranous positivity in neoplastic cells", "intensity": "strong", "distribution": "diffuse"},
+            {"marker": "CD79a", "observations": "Negative in neoplastic cells; positive in scattered reactive B lymphocytes", "intensity": "negative", "distribution": "background only"},
+            {"marker": "Pax5", "observations": "Negative in neoplastic cells", "intensity": "negative", "distribution": "negative"},
+            {"marker": "Ki67", "observations": "Nuclear positivity in approximately 40% of neoplastic cells", "intensity": "moderate", "distribution": "scattered"}
+          ]
+        },
+        "other": {},
+        "histopathology_keywords": ["t-cell lymphoma", "cd3 positive", "cd79a negative", "intestinal"]
+      },
+      "comment": "Immunophenotyping confirms T-cell origin of intestinal lymphoma. The high Ki67 index (40%) suggests an aggressive proliferative rate. Feline intestinal T-cell lymphoma carries a poorer prognosis compared to B-cell lymphoma.",
+      "case_keywords": ["t-cell lymphoma", "intestinal", "feline", "cd3", "cd79a", "immunophenotyping"],
+      "rag_summary": "Seven-year-old female spayed DSH immunophenotyping intestinal lymphoma. CD3 strong membranous positivity confirming T-cell origin. CD79a negative in neoplastic cells positive only in background reactive B cells. Pax5 negative. Ki67 40 percent nuclear positivity indicating aggressive proliferation. Transmural small intestinal infiltration by monomorphic intermediate-sized lymphoid population. T-cell intestinal lymphoma poorer prognosis than B-cell type in cats."
+    }
+  },
+  {
+    "case_id": "90016",
+    "processed_at": "2026-01-15T10:15:00Z",
+    "source_file": "90016-IH-demo.json",
+    "data": {
+      "summary": "Five-year-old female spayed Staffordshire Bull Terrier. Immunohistochemistry on amelanotic digital tumour. Melan-A and PNL2 positive confirming melanoma.",
+      "report_metadata": {"case_id": "90016", "report_type": "IH", "filenames": ["90016_IH_report.txt"], "pathologists": ["Dr. A. Demo"], "typed_by": ["Tech Demo"], "date_received": "2026-04-15", "date_of_surgery": "2026-04-08", "accession_id": "", "previous_case_id": "90008", "referring_veterinarian": "Dr. I. Walker", "external_reference": ""},
+      "animal_details": {"species": "Canine", "breed": "Staffordshire Bull Terrier", "age": 5, "sex": "Female", "neutered": "yes", "owner": "Demo Owner", "animal_name": "Luna", "bodyweight": 18},
+      "histopathology": {
+        "description": "Immunohistochemistry panel on amelanotic digital neoplasm previously diagnosed on H&E (case 90008).",
+        "diagnosis": "Amelanotic melanoma confirmed — Melan-A positive, PNL2 positive, S100 positive",
+        "tumor_type": "melanoma", "tumor_location": "third digit, right forelimb", "tumor_size": "2.5 cm",
+        "morphological_features": {"cell_size": "large", "cell_shape": "epithelioid and spindle", "nuclear_characteristics": "marked pleomorphism", "mitotic_figures": "18 per 10 HPF", "necrosis": "multifocal"},
+        "stains": [],
+        "immunohistochemistry": {
+          "markers_used": ["Melan-A", "PNL2", "S100", "Ki67"],
+          "results": [
+            {"marker": "Melan-A", "observations": "Cytoplasmic positivity in majority of neoplastic cells", "intensity": "moderate", "distribution": "diffuse (>80%)"},
+            {"marker": "PNL2", "observations": "Cytoplasmic positivity in neoplastic cells", "intensity": "strong", "distribution": "diffuse"},
+            {"marker": "S100", "observations": "Nuclear and cytoplasmic positivity", "intensity": "moderate", "distribution": "diffuse"},
+            {"marker": "Ki67", "observations": "Nuclear positivity in 45% of neoplastic cells", "intensity": "strong", "distribution": "diffuse"}
+          ]
+        },
+        "other": {},
+        "histopathology_keywords": ["melan-a", "pnl2", "s100", "amelanotic melanoma", "digital"]
+      },
+      "comment": "Immunohistochemistry confirms melanocytic origin of the amelanotic digital neoplasm. Melan-A, PNL2, and S100 are all positive. High Ki67 (45%) confirms aggressive proliferative behaviour. Digital melanomas in dogs are typically malignant with metastatic potential.",
+      "case_keywords": ["amelanotic melanoma", "melan-a", "pnl2", "s100", "digital", "canine", "immunohistochemistry"],
+      "rag_summary": "Five-year-old female spayed Staffordshire Bull Terrier immunohistochemistry on amelanotic digital neoplasm. Melan-A positive cytoplasmic diffuse over 80 percent. PNL2 strong diffuse cytoplasmic positive. S100 moderate diffuse nuclear and cytoplasmic positive. Ki67 45 percent confirming aggressive proliferation. Confirms melanocytic origin of amelanotic tumour. Digital melanomas typically malignant with metastatic potential to lungs and regional lymph nodes."
+    }
+  },
+  {
+    "case_id": "90017",
+    "processed_at": "2026-01-15T10:16:00Z",
+    "source_file": "90017-IH-demo.json",
+    "data": {
+      "summary": "Nine-year-old male neutered Golden Retriever. Immunohistochemistry on subcutaneous spindle cell tumour. Vimentin positive, SMA negative, desmin negative, confirming fibrosarcoma.",
+      "report_metadata": {"case_id": "90017", "report_type": "IH", "filenames": ["90017_IH_report.txt"], "pathologists": ["Dr. A. Demo"], "typed_by": ["Tech Demo"], "date_received": "2026-03-05", "date_of_surgery": "2026-02-27", "accession_id": "", "previous_case_id": "90005", "referring_veterinarian": "Dr. F. Smith", "external_reference": ""},
+      "animal_details": {"species": "Canine", "breed": "Golden Retriever", "age": 9, "sex": "Male", "neutered": "yes", "owner": "Demo Owner", "animal_name": "Charlie", "bodyweight": 35},
+      "histopathology": {
+        "description": "Immunohistochemistry panel to further characterise subcutaneous spindle cell neoplasm (case 90005).",
+        "diagnosis": "Fibrosarcoma confirmed — Vimentin+, SMA-, Desmin-, S100-",
+        "tumor_type": "fibrosarcoma", "tumor_location": "thoracic wall, subcutis", "tumor_size": "4 cm",
+        "morphological_features": {"cell_size": "moderate", "cell_shape": "spindle", "nuclear_characteristics": "mild atypia", "mitotic_figures": "3 per 10 HPF", "necrosis": "absent"},
+        "stains": [],
+        "immunohistochemistry": {
+          "markers_used": ["Vimentin", "SMA", "Desmin", "S100"],
+          "results": [
+            {"marker": "Vimentin", "observations": "Strong cytoplasmic positivity in all neoplastic cells", "intensity": "strong", "distribution": "diffuse"},
+            {"marker": "SMA (alpha-smooth muscle actin)", "observations": "Negative in neoplastic cells", "intensity": "negative", "distribution": "negative"},
+            {"marker": "Desmin", "observations": "Negative in neoplastic cells", "intensity": "negative", "distribution": "negative"},
+            {"marker": "S100", "observations": "Negative in neoplastic cells", "intensity": "negative", "distribution": "negative"}
+          ]
+        },
+        "other": {},
+        "histopathology_keywords": ["vimentin", "fibrosarcoma", "spindle cell", "soft tissue sarcoma"]
+      },
+      "comment": "Immunohistochemistry profile (Vimentin+, SMA-, Desmin-, S100-) supports fibroblastic differentiation consistent with fibrosarcoma. Rules out smooth muscle, skeletal muscle, and peripheral nerve sheath origin.",
+      "case_keywords": ["fibrosarcoma", "vimentin", "soft tissue sarcoma", "canine", "immunohistochemistry"],
+      "rag_summary": "Nine-year-old male neutered Golden Retriever immunohistochemistry panel on subcutaneous spindle cell neoplasm thoracic wall. Vimentin strong diffuse cytoplasmic positive confirming mesenchymal origin. SMA alpha-smooth muscle actin negative ruling out smooth muscle differentiation. Desmin negative ruling out skeletal muscle origin. S100 negative ruling out peripheral nerve sheath tumour. Profile supports fibroblastic differentiation consistent with fibrosarcoma."
+    }
+  },
+  {
+    "case_id": "90018",
+    "processed_at": "2026-01-15T10:17:00Z",
+    "source_file": "90018-CY-demo.json",
+    "data": {
+      "summary": "Six-year-old female spayed Siamese cat with mediastinal mass. Fine needle aspirate reveals lymphoblastic lymphoma.",
+      "report_metadata": {"case_id": "90018", "report_type": "CY", "filenames": ["90018_CY_report.txt"], "pathologists": ["Dr. A. Demo"], "typed_by": ["Tech Demo"], "date_received": "2026-07-01", "date_of_sampling": "2026-06-30", "accession_id": "", "previous_case_id": "", "referring_veterinarian": "Dr. P. Oncology", "external_reference": ""},
+      "animal_details": {"species": "Feline", "breed": "Siamese", "age": 6, "sex": "Female", "neutered": "yes", "owner": "Demo Owner", "animal_name": "Cleo", "bodyweight": 4},
+      "clinical_details": {"clinical_diagnosis": "Mediastinal mass on thoracic radiographs", "clinical_suspicion": "Lymphoma vs thymoma", "cytology_request": "Differentiate lymphoma from thymoma", "other": {}, "clinical_details_keywords": ["mediastinal mass", "thorax"]},
+      "cytology": {
+        "description": "Highly cellular aspirate composed of a monomorphic population of large lymphoid cells. Cells are 2-3x RBC diameter with round to irregular nuclei, finely stippled chromatin, and 1-3 prominent nucleoli. Scant basophilic cytoplasm. Numerous mitotic figures. Background of lysed cells and lymphoglandular bodies.",
+        "diagnosis": "Lymphoblastic lymphoma (mediastinal)",
+        "cell_type": "large lymphoid cells",
+        "cell_morphology": "monomorphic, immature",
+        "cytological_features": {"cell_size": "large (2-3x RBC)", "cell_shape": "round to irregular", "nuclear_characteristics": "finely stippled chromatin, 1-3 prominent nucleoli", "cytoplasmic_features": "scant, basophilic"},
+        "cytology_keywords": ["lymphoma", "lymphoblastic", "mediastinal", "large cell"]
+      },
+      "comment": "Cytology consistent with lymphoblastic lymphoma. Mediastinal location in a young Siamese cat raises high suspicion for T-cell origin. Flow cytometry or immunocytochemistry recommended for immunophenotyping. FeLV testing recommended.",
+      "case_keywords": ["lymphoma", "lymphoblastic", "mediastinal", "feline", "cytology", "siamese"],
+      "rag_summary": "Six-year-old female spayed Siamese mediastinal mass fine needle aspirate. Cytology confirms lymphoblastic lymphoma. Highly cellular monomorphic population of large lymphoid cells 2-3 times RBC diameter. Round to irregular nuclei finely stippled chromatin 1-3 prominent nucleoli. Scant basophilic cytoplasm. Numerous mitotic figures. Lymphoglandular bodies. Mediastinal location in young Siamese suggests T-cell origin. FeLV testing recommended."
+    }
+  },
+  {
+    "case_id": "90019",
+    "processed_at": "2026-01-15T10:18:00Z",
+    "source_file": "90019-CY-demo.json",
+    "data": {
+      "summary": "Eleven-year-old male neutered Cavalier King Charles Spaniel with popliteal lymph node enlargement. Fine needle aspirate reveals metastatic carcinoma.",
+      "report_metadata": {"case_id": "90019", "report_type": "CY", "filenames": ["90019_CY_report.txt"], "pathologists": ["Dr. A. Demo"], "typed_by": ["Tech Demo"], "date_received": "2026-07-15", "date_of_sampling": "2026-07-14", "accession_id": "", "previous_case_id": "", "referring_veterinarian": "Dr. Q. Referral", "external_reference": ""},
+      "animal_details": {"species": "Canine", "breed": "Cavalier King Charles Spaniel", "age": 11, "sex": "Male", "neutered": "yes", "owner": "Demo Owner", "animal_name": "Oliver", "bodyweight": 8},
+      "clinical_details": {"clinical_diagnosis": "Enlarged right popliteal lymph node", "clinical_suspicion": "Lymphoma vs metastatic disease", "cytology_request": "Characterise lymph node enlargement", "other": {}, "clinical_details_keywords": ["lymphadenopathy", "popliteal"]},
+      "cytology": {
+        "description": "Moderately cellular aspirate with background of reactive lymphocytes and macrophages. Scattered clusters of large epithelial cells with cohesive arrangement, high nuclear-to-cytoplasmic ratio, round to oval nuclei with prominent nucleoli. Cytoplasm basophilic with occasional vacuolation. Findings consistent with metastatic carcinoma within the lymph node.",
+        "diagnosis": "Metastatic carcinoma in popliteal lymph node",
+        "cell_type": "epithelial cells (carcinoma)",
+        "cell_morphology": "cohesive clusters, high N:C ratio",
+        "cytological_features": {"cell_size": "large", "cell_shape": "round to oval, cohesive clusters", "nuclear_characteristics": "round to oval nuclei, prominent nucleoli", "cytoplasmic_features": "basophilic, occasional vacuoles"},
+        "cytology_keywords": ["metastatic carcinoma", "epithelial", "lymph node"]
+      },
+      "comment": "Metastatic carcinoma confirmed in popliteal lymph node. Primary site should be investigated — consider digital, anal sac, or distal limb origin given drainage pattern. Thoracic and abdominal imaging recommended for full staging.",
+      "case_keywords": ["metastatic carcinoma", "lymph node", "canine", "cytology", "staging"],
+      "rag_summary": "Eleven-year-old male neutered Cavalier King Charles Spaniel enlarged right popliteal lymph node fine needle aspirate. Metastatic carcinoma confirmed. Scattered clusters large cohesive epithelial cells with high nuclear-to-cytoplasmic ratio round to oval nuclei prominent nucleoli basophilic cytoplasm with vacuolation. Background reactive lymphocytes and macrophages. Primary site investigation recommended considering digital anal sac or distal limb origin. Full staging with thoracic and abdominal imaging advised."
+    }
+  },
+  {
+    "case_id": "90020",
+    "processed_at": "2026-01-15T10:19:00Z",
+    "source_file": "90020-CY-demo.json",
+    "data": {
+      "summary": "Three-year-old male entire Weimaraner with subcutaneous mass on distal forelimb. Fine needle aspirate reveals lipoma.",
+      "report_metadata": {"case_id": "90020", "report_type": "CY", "filenames": ["90020_CY_report.txt"], "pathologists": ["Dr. A. Demo"], "typed_by": ["Tech Demo"], "date_received": "2026-08-01", "date_of_sampling": "2026-07-31", "accession_id": "", "previous_case_id": "", "referring_veterinarian": "Dr. R. General", "external_reference": ""},
+      "animal_details": {"species": "Canine", "breed": "Weimaraner", "age": 3, "sex": "Male", "neutered": "no", "owner": "Demo Owner", "animal_name": "Ghost", "bodyweight": 34},
+      "clinical_details": {"clinical_diagnosis": "Soft subcutaneous mass, distal right forelimb", "clinical_suspicion": "Lipoma", "cytology_request": "Confirm benign nature", "other": {}, "clinical_details_keywords": ["subcutaneous mass", "soft", "forelimb"]},
+      "cytology": {
+        "description": "Aspirate yields oily material. Smears show abundant mature adipocytes with small peripheral nuclei and large clear cytoplasmic lipid vacuoles. No atypical cells identified. No inflammatory component.",
+        "diagnosis": "Lipoma",
+        "cell_type": "mature adipocytes",
+        "cell_morphology": "mature fat cells",
+        "cytological_features": {"cell_size": "large", "cell_shape": "round with large lipid vacuole", "nuclear_characteristics": "small, peripheral, uniform", "cytoplasmic_features": "clear, large single lipid vacuole"},
+        "cytology_keywords": ["lipoma", "adipocytes", "benign"]
+      },
+      "comment": "Cytology consistent with lipoma. Benign adipocytic tumour. Monitor for growth. Surgical removal if causing mechanical interference or rapid enlargement.",
+      "case_keywords": ["lipoma", "benign", "canine", "cytology", "subcutaneous"],
+      "rag_summary": "Three-year-old male entire Weimaraner soft subcutaneous mass distal right forelimb fine needle aspirate. Lipoma confirmed. Abundant mature adipocytes small peripheral nuclei large clear cytoplasmic lipid vacuoles. No atypical cells. No inflammation. Benign adipocytic tumour. Monitor for growth surgical removal only if causing mechanical interference."
+    }
+  }
+]

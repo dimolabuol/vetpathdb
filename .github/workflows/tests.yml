@@ -1,0 +1,30 @@
+name: Tests
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install dependencies
+        # Install [mcp] alongside [dev] so tests/test_imports.py can verify
+        # that vetpathdb.mcp.server loads cleanly. Skip [pdf] — it pulls
+        # marker-pdf which is large and unnecessary for the test suite.
+        run: pip install -e ".[dev,mcp]"
+
+      - name: Run tests
+        run: python -m pytest tests/ -v

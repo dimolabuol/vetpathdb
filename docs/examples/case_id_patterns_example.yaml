@@ -1,0 +1,30 @@
+# Worked example: case-ID regex patterns for a lab with structured
+# archival IDs. This is an ILLUSTRATIVE, made-up numbering scheme — adapt
+# the regexes to your own institution's conventions.
+#
+# The fictional scheme below has two ID styles:
+#   - current: an "ACC-NNNNNN" accession number, e.g. ACC-002317
+#   - legacy:  a "YYYY/NNN" form, e.g. 2014/057, where YYYY is the year and
+#              NNN is a zero-padded sequence within that year
+#
+# It demonstrates the optional pattern features: `standardize` (rewrite to a
+# canonical form before matching), `exclude` (skip when a longer/ambiguous
+# form is present), and `skip_if_matches` (disambiguate overlapping styles).
+#
+# To use a pattern file, point the pipeline at it:
+#     export VETPATHDB_CASE_ID_PATTERNS=docs/examples/case_id_patterns_example.yaml
+#     vetpathdb pipeline ...
+#
+# The bundled default at `vetpathdb/prompts/case_id_patterns.yaml` is
+# permissive (falls back to the filename stem) so the tool works on any PDF
+# folder out of the box. See `vetpathdb/prompts/schemas/README.md` for
+# custom pattern authoring.
+
+patterns:
+  - name: legacy
+    regex: '\d{4}/\d{3}'
+    standardize: '(\d{4})\s*[/_-]\s*(\d{3})->\1/\2'
+    exclude: '\d{4}/\d{3}/\d+'
+  - name: current
+    regex: '\bACC-\d{6}\b'
+    skip_if_matches: '\d{4}/\d{3}'

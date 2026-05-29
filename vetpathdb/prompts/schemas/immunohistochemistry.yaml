@@ -1,0 +1,115 @@
+name: Immunohistochemistry
+code: IH
+description: Immunohistochemistry panel and staining reports
+
+ui:
+  icon: fa-dna
+  label_plural: IH Reports
+
+detection_patterns:
+  filename: ["_IH_", "_IH.", "_IHC_", "-IH_", "-IH.", "-IHC_"]
+  content:
+    - "immunohistochemistry"
+    - "immunohistochemical"
+    - "IHC report"
+    - "IHC panel"
+  content_regex:
+    - 'immuno\s*hist\w*\s*report'
+    - 'immunoh\w*\s*report'
+    - 'ihc\s*report'
+
+schema: |
+  {
+    "summary": "",
+    "report_metadata": {
+      "case_id": "",
+      "report_type": "IH",
+      "filenames": ["<array of all files involved in the case>"],
+      "pathologists": ["<array of relevant names, no titles, just names>"],
+      "typed_by": ["<array of relevant names, no titles, just names>"],
+      "date_received": "YYYY-MM-DD",
+      "date_of_surgery": "YYYY-MM-DD",
+      "accession_id": "",
+      "previous_case_id": "",
+      "referring_veterinarian": "",
+      "external_reference": ""
+    },
+    "animal_details": {
+      "species": "<standardised category if stated (e.g. Canine, Feline, Equine, Bovine, Avian, Reptile). Use verbatim source text if no clear category applies>",
+      "breed": "",
+      "age": "<full years only as integer, use 0 if less than year>",
+      "sex": "<Male / Female>",
+      "neutered": "<yes, no, or unknown>",
+      "owner": "",
+      "animal_name": "",
+      "bodyweight": "<always in kg, just integer, without unit>"
+    },
+    "histopathology": {
+      "description": "",
+      "diagnosis": "",
+      "tumor_type": "",
+      "tumor_location": "",
+      "tumor_size": "",
+      "morphological_features": {
+        "cell_size": "",
+        "cell_shape": "",
+        "nuclear_characteristics": "",
+        "mitotic_figures": "",
+        "necrosis": ""
+      },
+      "stains": [
+        {
+          "stain_name": "",
+          "result": ""
+        }
+      ],
+      "immunohistochemistry": {
+        "markers_used": [],
+        "results": [
+          {
+            "marker": "",
+            "observations": "",
+            "intensity": "",
+            "distribution": ""
+          }
+        ]
+      },
+      "other": {},
+      "histopathology_keywords": []
+    },
+    "comment": "",
+    "case_keywords": [],
+    "rag_summary": ""
+  }
+
+enrichment:
+  fields:
+    case_keywords:
+      type: array
+      description: >
+        Keywords broadly describing the case. All lowercase, short,
+        low cardinality. Used to filter across thousands of cases.
+        Describe the medical problem itself, not metadata (species,
+        breed, dates are already in structured fields).
+    rag_summary:
+      type: string
+      description: >
+        Dense factual summary for vector similarity search. Cram as
+        many important facts from the case as possible. Hard facts
+        only, no fluff. Not human-facing; exists solely to maximise
+        signal for a RAG system.
+  exclude_from_keywords:
+    - report_metadata
+    - animal_details
+
+form:
+  sections:
+    - inherit: common.signalment
+    - inherit: common.metadata
+      extra_fields:
+        - path: report_metadata.date_of_surgery
+          label: Date of surgery
+          kind: scalar
+          rule: yyyy_mm_dd
+    - inherit: surgical_pathology.histopathology
+    - inherit: common.comment

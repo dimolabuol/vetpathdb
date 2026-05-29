@@ -1,0 +1,24 @@
+# Case-ID regex patterns, loaded by vetpathdb/pipeline/_utils.py.
+#
+# The shipped default is intentionally empty. With no patterns, the
+# pipeline derives a case_id from the PDF filename stem
+# (`patient_smith_histopath.pdf` → `patient_smith_histopath`). This means
+# the tool works on any folder of PDFs without configuration.
+#
+# Labs with structured archival IDs can override by pointing
+# VETPATHDB_CASE_ID_PATTERNS at a file with real patterns. Example:
+#
+#     export VETPATHDB_CASE_ID_PATTERNS=docs/examples/case_id_patterns_example.yaml
+#
+# See docs/examples/case_id_patterns_example.yaml for a worked example, and
+# vetpathdb/prompts/schemas/README.md for how to author your own.
+#
+# Each pattern entry has:
+#   name:             short identifier for logging
+#   regex:            Python regex matched against filenames and parent dirs
+#   standardize:      optional "source_regex->replacement" applied first
+#   exclude:          optional regex; skip if surrounding text matches
+#   skip_if_matches:  optional regex; skip if the candidate matches
+#                     (used to disambiguate overlapping patterns)
+
+patterns: []

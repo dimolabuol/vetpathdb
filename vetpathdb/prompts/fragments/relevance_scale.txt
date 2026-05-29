@@ -1,0 +1,11 @@
+- 0.0 – Case unrelated to query intent
+- 0.1 – Shares only generic terms
+- 0.2 – Same broad category, different context
+- 0.3 – Addresses part of query, misses main intent
+- 0.4 – Related topic but different focus
+- 0.5 – Partially addresses query intent
+- 0.6 – Addresses main query intent, lacks some specifics
+- 0.7 – Matches query intent, minor contextual differences
+- 0.8 – Strongly matches query intent and context
+- 0.9 – Near-complete match, one minor detail differs
+- 1.0 – All query criteria exactly match

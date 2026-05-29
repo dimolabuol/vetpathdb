@@ -1,0 +1,284 @@
+name: Post-Mortem / Necropsy
+code: PM
+description: Post-mortem examination and necropsy reports
+
+ui:
+  icon: fa-skull
+  label_plural: PM Reports
+
+detection_patterns:
+  filename: ["_PM_", "_PM.", "-PM_", "-PM."]
+  content:
+    - "necropsy report"
+    - "post-mortem report"
+    - "postmortem report"
+    - "preliminary necropsy"
+  content_regex:
+    - 'necropsy\s*report'
+    - 'post[\s-]*mortem\s*report'
+    - '(preliminary|prelim\w*|interim)\s*necropsy\s*report'
+
+schema: |
+  {
+    "summary": "",
+    "report_metadata": {
+      "case_id": "",
+      "report_type": "PM",
+      "filenames": ["<array of all files involved in the case>"],
+      "pathologists": ["<array of names>"],
+      "typed_by": ["<array of names>"],
+      "date_received": "YYYY-MM-DD",
+      "date_of_necropsy": "YYYY-MM-DD",
+      "accession_id": "",
+      "previous_case_id": "",
+      "referring_veterinarian": "",
+      "external_reference": ""
+    },
+    "animal_details": {
+      "species": "<standardised category if stated (e.g. Canine, Feline, Equine, Bovine, Avian, Reptile). Use verbatim source text if no clear category applies>",
+      "breed": "",
+      "age": "<integer years, use 0 if less than year>",
+      "sex": "<Male / Female>",
+      "neutered": "<yes, no, or unknown>",
+      "owner": "",
+      "animal_name": "",
+      "bodyweight": "<kg as integer, no unit>"
+    },
+    "clinical_history": {
+      "time_of_discovery": "YYYY-MM-DD",
+      "time_of_euthanasia": "YYYY-MM-DD",
+      "condition_at_discovery": "",
+      "examination_details": "",
+      "treatment_attempts": "",
+      "cause_of_death": "",
+      "other": {},
+      "clinical_history_keywords": []
+    },
+    "gross_findings": {
+      "external_examination": {
+        "observations": {
+          "signs_of_death": "",
+          "cadaver_description": "",
+          "skin_observations": "",
+          "subcutis_observations": ""
+        },
+        "other": {},
+        "external_examination_keywords": []
+      },
+      "internal_examination": {
+        "observations": {
+          "cranial_cavity": "",
+          "thoracic_cavity": "",
+          "abdominal_cavity": "",
+          "pelvic_cavity": "",
+          "muscular_system": "",
+          "skeletal_system": "",
+          "nervous_system": "",
+          "cardiovascular_system": "",
+          "respiratory_system": "",
+          "gastrointestinal_tract": "",
+          "urogenital_system": "",
+          "lymphatic_system": "",
+          "endocrine_system": ""
+        },
+        "other": {},
+        "internal_examination_keywords": []
+      }
+    },
+    "histopathology": {
+      "observations": {
+        "muscular_system": "",
+        "endocrine_system": "",
+        "nervous_system": "",
+        "cardiovascular_system": "",
+        "respiratory_system": "",
+        "lymphatic_system": "",
+        "gastrointestinal_tract": "",
+        "urogenital_system": ""
+      },
+      "stains": [
+        {
+          "stain_name": "",
+          "result": ""
+        }
+      ],
+      "immunohistochemistry": {
+        "markers_used": [],
+        "results": [
+          {
+            "system": "<muscular_system / endocrine_system / nervous_system / cardiovascular_system / respiratory_system / lymphatic_system / gastrointestinal_tract / urogenital_system>",
+            "marker": "",
+            "observations": "",
+            "intensity": "",
+            "distribution": ""
+          }
+        ],
+        "immunohistochemistry_keywords": []
+      },
+      "other": {},
+      "histopathology_keywords": []
+    },
+    "bacteriology": {
+      "samples": [
+        {
+          "sample_site": "<lung / spleen / lymph_node / liver / bone_marrow / small_intestine / large_intestine>",
+          "result": ""
+        }
+      ],
+      "other": {},
+      "bacteriology_keywords": []
+    },
+    "comment": "",
+    "addendum": [
+      {
+        "addendum_date": "",
+        "description": ""
+      }
+    ],
+    "case_keywords": [],
+    "rag_summary": ""
+  }
+
+enrichment:
+  fields:
+    case_keywords:
+      type: array
+      description: >
+        Keywords broadly describing the case. All lowercase, short,
+        low cardinality. Used to filter across thousands of cases.
+        Describe the medical problem itself, not metadata (species,
+        breed, dates are already in structured fields).
+    rag_summary:
+      type: string
+      description: >
+        Dense factual summary for vector similarity search. Cram as
+        many important facts from the case as possible. Hard facts
+        only, no fluff. Not human-facing; exists solely to maximise
+        signal for a RAG system.
+  exclude_from_keywords:
+    - report_metadata
+    - animal_details
+
+form:
+  sections:
+    - inherit: common.signalment
+    - inherit: common.metadata
+      extra_fields:
+        - path: report_metadata.date_of_necropsy
+          label: Date of necropsy
+          kind: scalar
+          rule: yyyy_mm_dd
+    - id: clinical_history
+      title: Clinical history
+      fields:
+        - path: clinical_history.condition_at_discovery
+          label: Condition at discovery
+          kind: scalar
+          rule: verbatim
+        - path: clinical_history.time_of_discovery
+          label: Time of discovery
+          kind: scalar
+          rule: yyyy_mm_dd
+        - path: clinical_history.time_of_euthanasia
+          label: Time of euthanasia
+          kind: scalar
+          rule: yyyy_mm_dd
+        - path: clinical_history.examination_details
+          label: Examination details
+          kind: scalar
+          rule: verbatim
+        - path: clinical_history.treatment_attempts
+          label: Treatment attempts
+          kind: scalar
+          rule: verbatim
+        - path: clinical_history.cause_of_death
+          label: Cause of death
+          kind: scalar
+          rule: verbatim
+    - id: external_examination
+      title: "Gross findings — external examination"
+      fields:
+        - path: gross_findings.external_examination.observations.signs_of_death
+          label: Signs of death
+          kind: scalar
+          rule: verbatim
+        - path: gross_findings.external_examination.observations.cadaver_description
+          label: Cadaver description
+          kind: scalar
+          rule: verbatim
+        - path: gross_findings.external_examination.observations.skin_observations
+          label: Skin
+          kind: scalar
+          rule: verbatim
+        - path: gross_findings.external_examination.observations.subcutis_observations
+          label: Subcutis
+          kind: scalar
+          rule: verbatim
+    - id: internal_examination
+      title: "Gross findings — internal examination"
+      dynamic:
+        path_template: "gross_findings.internal_examination.observations.{system}"
+        label_from: system
+        kind: scalar
+        rule: verbatim
+        systems:
+          - cranial_cavity
+          - thoracic_cavity
+          - abdominal_cavity
+          - pelvic_cavity
+          - muscular_system
+          - skeletal_system
+          - nervous_system
+          - cardiovascular_system
+          - respiratory_system
+          - gastrointestinal_tract
+          - urogenital_system
+          - lymphatic_system
+          - endocrine_system
+    - id: histopathology
+      title: "Histopathology (organ-system)"
+      dynamic:
+        path_template: "histopathology.observations.{system}"
+        label_from: system
+        kind: scalar
+        rule: verbatim
+        systems:
+          - muscular_system
+          - endocrine_system
+          - nervous_system
+          - cardiovascular_system
+          - respiratory_system
+          - lymphatic_system
+          - gastrointestinal_tract
+          - urogenital_system
+      extra_fields:
+        - path: histopathology.stains
+          label: Stains
+          kind: set
+          rule: set_complete
+        - path: histopathology.immunohistochemistry.markers_used
+          label: IHC markers used
+          kind: set
+          rule: set_complete
+        - path: histopathology.immunohistochemistry.results
+          label: IHC results
+          kind: set
+          description: "LLM prompt: system, marker, observations, intensity, distribution per result. LLM rule: include all items from report, do not skip any. Do not invent entries."
+    - id: bacteriology
+      title: Bacteriology
+      fields:
+        - path: bacteriology.samples
+          label: Bacteriology samples
+          kind: set
+          description: "LLM prompt: sample_site from lung/spleen/lymph_node/liver/bone_marrow/intestine + result. LLM rule: include all items from report, do not skip any. Do not invent entries."
+    - id: comment
+      title: Comment & addendum
+      fields:
+        - path: comment
+          label: Comment
+          kind: scalar
+          rule: comment_verbatim
+        - path: addendum
+          label: Addendum
+          kind: set
+          description: "LLM prompt: addendum_date + description per entry. LLM rule: preserve original text verbatim, include all details. Do not make things up."

@@ -1,0 +1,1 @@
+Reasoning must be brief (one line) and cite specific details from the case that match or don't match the query (e.g., "Canine lymphoma but B-cell not T-cell" or "Same breed and tumor type, different age"). Never describe the match quality abstractly - only state what specifically matched and what didn't.

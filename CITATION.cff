@@ -1,0 +1,42 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the accompanying paper."
+title: "VetPathDB"
+type: software
+version: 1.0.0
+date-released: "2026-05-29"
+license: MIT
+repository-code: "https://github.com/dimolabuol/vetpathdb"
+abstract: >-
+  VetPathDB is an open-source platform for extracting structured data
+  from veterinary pathology PDF reports using large language models,
+  with AI-powered semantic search for case retrieval.
+keywords:
+  - veterinary-pathology
+  - information-extraction
+  - semantic-search
+  - large-language-models
+  - natural-language-processing
+  - FastAPI
+  - MongoDB
+authors:
+  - family-names: Orlowska
+    given-names: Anna
+    affiliation: "University of Liverpool"
+  - family-names: Spica
+    given-names: Lukasz
+    affiliation: "University of Liverpool"
+  - family-names: Ressel
+    given-names: Lorenzo
+    affiliation: "University of Liverpool"
+preferred-citation:
+  type: article
+  title: "Structuring and Retrieval of Veterinary Pathology Reports Using an Open-Source Large Language Model Pipeline"
+  authors:
+    - family-names: Orlowska
+      given-names: Anna
+    - family-names: Spica
+      given-names: Lukasz
+    - family-names: Ressel
+      given-names: Lorenzo
+  year: 2026
+  # doi: "10.XXXX/XXXXX"  # Update when published

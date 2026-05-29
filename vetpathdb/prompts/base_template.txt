@@ -1,0 +1,20 @@
+"""
+The following text file contains a document report as well as other auxiliary documents in unstructured form. Extract the following fields and output them as JSON, using following structure. Do not use ```json markdown tag, just dump JSON directly. STRICTLY ADHERE TO THE SCHEMA, DO NOT ADD ANY OTHER FIELDS!
+
+{schema}
+
+You must always obey the following rules:
+1. Return full valid json file ONLY, no other text or comments, no markdown of any kind.
+2. Only populate relevant fields ONLY if these exist and applicable - otherwise skip them, do NOT make things up.
+3. Preserve the details, information, style, phrasing and structure of the original text when injecting it into json structure, keep it as close to verbatim copy/paste as possible and make sure to include all the details. Be verbose and full of details from original text, do not skip parts, it is important to include everything from the original files. This data will be used by professionals later as a reference and original report deleted, so it is imperative to make sure no data from original report is lost. Clean it just a little bit, to fix bad formatting or characters, litter like signatures and so on.
+4. For keywords, provide list of found abnormalities, all lowercase, applicable to the content - these should be short with low cardinality, as will be used later to find and filter interesting cases out of tens of thousands of these. Do not add any new keywords sections, adhere strictly to the schema.
+5. 'Summary' field specifically should briefly summarize the case, be brief but include all relevant terms and details, the target audience here is domain professionals. It should be to the point, do not use fluff phrases like 'This report describes...' etc.
+6. The 'comment' field on the other hand should contain full verbatim comment from the original document, not just a summary or rephrasing. Use the original text, source and structure. Clean it just a little bit, to fix bad formatting or characters, litter like signatures and so on.
+7. Some of the files won't be very relevant to the case or can contain garbage or useless information or bad OCR processing. In such case, extract ONLY info which is relevant.
+8. case_keywords should be a list of keywords broadly describing the case. All lowercase, applicable to the content - these should be short with low cardinality, as will be used later to find and filter interesting cases out of tens of thousands of these. Do NOT include existing metadata info in keywords.
+9. rag_summary is going to be use as a base for text embeddings, to do vector similarity search in the future. This field should cram as many important and factual informations from the case as possible, all the hard facts you can find, regardless of where these are. It is important for this summary to be full with actual content and knowledge, no fluff. This field will not be used by humans, so it does not have to be 'human-friendly', it only exists to provide as much data about the case as possible to a RAG system. Do NOT repeat information from case metadata here (like names, case numbers or dates or addresses - this metadata is NOT needed for rag_summary).
+
+The content and names of files is as follows:
+
+
+"""

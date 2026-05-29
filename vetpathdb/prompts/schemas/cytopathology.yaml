@@ -1,0 +1,150 @@
+name: Cytopathology
+code: CY
+description: Cytology sampling and fine-needle aspirate reports
+
+ui:
+  icon: fa-eye-dropper
+  label_plural: CY Reports
+
+detection_patterns:
+  filename: ["_CY_", "_CY.", "-CY_", "-CY."]
+  content:
+    - "cytology report"
+    - "cytopathology"
+    - "fine needle aspirate"
+    - "FNA"
+  content_regex:
+    - 'cyto\w*\s*report'
+    - '(preliminary\s*)?cytology\s*report'
+
+schema: |
+  {
+    "summary": "",
+    "report_metadata": {
+      "case_id": "",
+      "report_type": "CY",
+      "filenames": ["<array of all files involved in the case>"],
+      "pathologists": ["<array listing all relevant names, no titles, just names>"],
+      "typed_by": ["<array listing all relevant names, no titles, just names>"],
+      "date_received": "YYYY-MM-DD",
+      "date_of_sampling": "YYYY-MM-DD",
+      "accession_id": "",
+      "previous_case_id": "",
+      "referring_veterinarian": "",
+      "external_reference": ""
+    },
+    "animal_details": {
+      "species": "<standardised category if stated (e.g. Canine, Feline, Equine, Bovine, Avian, Reptile). Use verbatim source text if no clear category applies>",
+      "breed": "",
+      "age": "<full years only as integer, use 0 if less than year>",
+      "sex": "<Male / Female>",
+      "neutered": "<yes, no, or unknown>",
+      "owner": "",
+      "animal_name": "",
+      "bodyweight": "<always in kg, just integer, without unit>"
+    },
+    "clinical_details": {
+      "clinical_diagnosis": "",
+      "clinical_suspicion": "",
+      "cytology_request": "",
+      "other": {},
+      "clinical_details_keywords": []
+    },
+    "cytology": {
+      "description": "",
+      "diagnosis": "",
+      "cell_type": "",
+      "cell_morphology": "",
+      "cytological_features": {
+        "cell_size": "",
+        "cell_shape": "",
+        "nuclear_characteristics": "",
+        "cytoplasmic_features": ""
+      },
+      "cytology_keywords": []
+    },
+    "comment": "",
+    "case_keywords": [],
+    "rag_summary": ""
+  }
+
+enrichment:
+  fields:
+    case_keywords:
+      type: array
+      description: >
+        Keywords broadly describing the case. All lowercase, short,
+        low cardinality. Used to filter across thousands of cases.
+        Describe the medical problem itself, not metadata (species,
+        breed, dates are already in structured fields).
+    rag_summary:
+      type: string
+      description: >
+        Dense factual summary for vector similarity search. Cram as
+        many important facts from the case as possible. Hard facts
+        only, no fluff. Not human-facing; exists solely to maximise
+        signal for a RAG system.
+  exclude_from_keywords:
+    - report_metadata
+    - animal_details
+
+form:
+  sections:
+    - inherit: common.signalment
+    - inherit: common.metadata
+      extra_fields:
+        - path: report_metadata.date_of_sampling
+          label: Date of sampling
+          kind: scalar
+          rule: yyyy_mm_dd
+    - id: clinical
+      title: Clinical details
+      fields:
+        - path: clinical_details.clinical_diagnosis
+          label: Clinical diagnosis
+          kind: scalar
+          rule: verbatim
+        - path: clinical_details.clinical_suspicion
+          label: Clinical suspicion
+          kind: scalar
+          rule: verbatim
+        - path: clinical_details.cytology_request
+          label: Cytology request
+          kind: scalar
+          rule: verbatim
+    - id: cytology
+      title: Cytology
+      fields:
+        - path: cytology.description
+          label: Description
+          kind: scalar
+          rule: verbatim
+        - path: cytology.diagnosis
+          label: Diagnosis
+          kind: scalar
+          rule: verbatim
+        - path: cytology.cell_type
+          label: Cell type
+          kind: scalar
+          rule: dont_invent
+        - path: cytology.cell_morphology
+          label: Cell morphology
+          kind: scalar
+          rule: dont_invent
+        - path: cytology.cytological_features.cell_size
+          label: Cell size
+          kind: scalar
+          rule: dont_invent
+        - path: cytology.cytological_features.cell_shape
+          label: Cell shape
+          kind: scalar
+          rule: dont_invent
+        - path: cytology.cytological_features.nuclear_characteristics
+          label: Nuclear characteristics
+          kind: scalar
+          rule: dont_invent
+        - path: cytology.cytological_features.cytoplasmic_features
+          label: Cytoplasmic features
+          kind: scalar
+          rule: dont_invent
+    - inherit: common.comment

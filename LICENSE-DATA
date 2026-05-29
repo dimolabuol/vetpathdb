@@ -1,0 +1,21 @@
+Creative Commons Attribution 4.0 International (CC BY 4.0)
+
+This license applies ONLY to the synthetic demonstration dataset shipped with
+VetPathDB — specifically `vetpathdb/examples/demo_cases.json`. All source code
+in this repository is licensed separately under the MIT License (see LICENSE).
+
+The demonstration dataset is entirely synthetic: it contains no real patient,
+animal, owner, or personnel information and is provided solely to let users
+exercise the system out of the box.
+
+Copyright (c) 2026 The VetPathDB Authors.
+
+You are free to share and adapt this dataset for any purpose, provided you give
+appropriate credit (cite VetPathDB — see CITATION.cff), provide a link to this
+license, and indicate if changes were made.
+
+The full legal text of the CC BY 4.0 license is available at:
+    https://creativecommons.org/licenses/by/4.0/legalcode
+
+A human-readable summary is available at:
+    https://creativecommons.org/licenses/by/4.0/

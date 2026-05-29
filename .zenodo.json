@@ -1,0 +1,22 @@
+{
+  "title": "VetPathDB: Structuring and Retrieval of Veterinary Pathology Reports Using an Open-Source Large Language Model Pipeline",
+  "description": "An open-source platform for extracting structured data from veterinary pathology reports using large language models, with AI-powered semantic search and LLM re-ranking for case retrieval.",
+  "upload_type": "software",
+  "license": "MIT",
+  "access_right": "open",
+  "version": "1.0.0",
+  "keywords": [
+    "veterinary-pathology",
+    "digital-pathology",
+    "information-extraction",
+    "semantic-search",
+    "large-language-models",
+    "retrieval-augmented-generation",
+    "natural-language-processing"
+  ],
+  "creators": [
+    { "name": "Orlowska, Anna", "affiliation": "University of Liverpool" },
+    { "name": "Spica, Lukasz", "affiliation": "University of Liverpool" },
+    { "name": "Ressel, Lorenzo", "affiliation": "University of Liverpool" }
+  ]
+}

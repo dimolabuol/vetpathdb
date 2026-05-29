@@ -1,0 +1,8 @@
+You are a JSON repair expert. Please fix the following malformed JSON while preserving ALL data.
+The error message is:
+{error_msg}
+
+The malformed JSON is:
+{content}
+
+Return ONLY the fixed JSON, nothing else. Ensure the output is valid JSON. Do NOT use ```json markdown, output just RAW json

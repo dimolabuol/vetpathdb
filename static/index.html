@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veterinary Pathology Database Explorer</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/chat.css">
+    <link rel="stylesheet" href="/static/css/search.css">
+    <style>
+        :root {
+            --warning-light: #fff3cd;
+            --warning-border: #ffecb5;
+        }
+        
+        /* Styles for case type banner */
+        .case-type-banner {
+            background-color: #3498db;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 4px 4px 0 0;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            justify-content: space-between;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <div class="search-section">
+                <div id="aiSearch" class="search-container">
+                    <div class="ai-search-row">
+                        <div class="search-input-wrapper">
+                            <textarea 
+                                id="aiSearchQuery" 
+                                placeholder="Case ID or semantic search (e.g. 'mast cell tumor in a young dog')"
+                                rows="2"
+                            ></textarea>
+                        </div>
+                        <div class="ai-controls">
+                            <div class="filter-controls">
+                                <!--
+                                    The per-type options are populated at runtime from /api/schemas
+                                    (see populateReportTypeDropdown in js/ui_init.js). The "All Reports"
+                                    default entries are kept here so the control renders sensibly even
+                                    before the first fetch completes.
+                                -->
+                                <div class="custom-select" id="reportTypeWrapper">
+                                    <div class="select-selected" data-value="ALL">
+                                        <i class="fas fa-file-medical"></i> All Reports
+                                    </div>
+                                    <div class="select-items select-hide">
+                                        <div data-value="ALL"><i class="fas fa-file-medical"></i> All Reports</div>
+                                    </div>
+                                    <select id="reportTypeFilter" style="display: none;">
+                                        <option value="ALL">All Reports</option>
+                                    </select>
+                                </div>
+                                <div class="custom-select editable-select" id="resultLimitWrapper">
+                                    <div class="select-selected" data-value="25">
+                                        <i class="fas fa-list-ol"></i>
+                                        <input type="text" class="select-input" value="25" placeholder="25">
+                                        <span class="select-suffix">results</span>
+                                    </div>
+                                    <div class="select-items select-hide">
+                                        <div data-value="10"><i class="fas fa-list-ol"></i> 10 results</div>
+                                        <div data-value="25"><i class="fas fa-list-ol"></i> 25 results</div>
+                                        <div data-value="50"><i class="fas fa-list-ol"></i> 50 results</div>
+                                        <div data-value="100"><i class="fas fa-list-ol"></i> 100 results</div>
+                                        <div data-value="200"><i class="fas fa-list-ol"></i> 200 results</div>
+                                        <div data-value="500"><i class="fas fa-list-ol"></i> 500 results</div>
+                                        <div data-value="1000"><i class="fas fa-list-ol"></i> 1000 results</div>
+                                        <div data-value="2000"><i class="fas fa-list-ol"></i> 2000 results</div>
+                                        <div data-value="5000"><i class="fas fa-list-ol"></i> 5000 results</div>
+                                        <div data-value="10000"><i class="fas fa-list-ol"></i> 10000 results</div>
+                                        <div data-value="all"><i class="fas fa-list-ol"></i> Everything</div>
+                                    </div>
+                                    <select id="aiResultLimit" style="display: none;">
+                                        <option value="10">10 results</option>
+                                        <option value="25" selected>25 results</option>
+                                        <option value="50">50 results</option>
+                                        <option value="100">100 results</option>
+                                        <option value="200">200 results</option>
+                                        <option value="500">500 results</option>
+                                        <option value="1000">1000 results</option>
+                                        <option value="2000">2000 results</option>
+                                        <option value="5000">5000 results</option>
+                                        <option value="10000">10000 results</option>
+                                        <option value="all">Everything</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="action-controls">
+                                <button onclick="handleSearchClick()">
+                                    Search
+                                </button>
+                                <button onclick="clearSearch()" class="clear-button">
+                                    Clear
+                                </button>
+                                <button onclick="openQueuePanel()" class="queue-button" title="View Search Queue">
+                                    <i class="fas fa-tasks"></i> Queue
+                                    <span id="queueBadge" class="queue-badge" style="display: none;"></span>
+                                </button>
+                                <div class="ai-options">
+                                    <label class="ai-analysis-toggle">
+                                        <input type="checkbox" id="aiAnalysis">
+                                        <span class="toggle-label">
+                                            <i class="fas fa-robot"></i>
+                                            AI Analysis
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="chatModal" class="modal">
+        <div class="modal-content chat-modal">
+            <div class="chat-header">
+                <div class="chat-header-content">
+                    <h3>Case Discussion <span id="chatCaseId" class="case-badge"></span></h3>
+                    <div class="case-meta" id="chatCaseMeta"></div>
+                </div>
+                <div class="chat-header-controls">
+                    <button onclick="clearChat()" class="clear-chat-button" title="Clear chat history">
+                        <i class="fas fa-broom"></i>
+                    </button>
+                    <span class="close-button" onclick="closeChatModal()">&times;</span>
+                </div>
+            </div>
+            <div class="chat-context" id="chatContext"></div>
+            <div class="chat-messages" id="chatMessages"></div>
+            <div class="chat-input-area">
+                <div class="chat-input-container">
+                    <div class="chat-input-wrapper">
+                        <textarea id="chatInput" placeholder="Ask a question about this case..."></textarea>
+                        <button onclick="sendChatMessage()">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                        <div class="chat-suggestions">
+                            <span class="suggestion-tag" onclick="insertSuggestion('What is the diagnosis?')">Diagnosis</span>
+                            <span class="suggestion-tag" onclick="insertSuggestion('What are the key findings?')">Key Findings</span>
+                            <span class="suggestion-tag" onclick="insertSuggestion('Summarize the case')">Summary</span>
+                            <span class="suggestion-tag" onclick="insertSuggestion('What is the prognosis?')">Prognosis</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="caseModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header" style="margin-bottom: 25px;">
+                <div class="modal-controls">
+                    <button onclick="expandAllSections()" class="control-button">Expand All</button>
+                    <button onclick="collapseAllSections()" class="control-button">Collapse All</button>
+                </div>
+                <span class="close-button" onclick="closeModal()">&times;</span>
+            </div>
+            <div id="caseDetails" class="case-details"></div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="sidebar">
+            <div class="sidebar-section">
+                <div class="section-header">
+                    <i class="fas fa-chart-pie"></i>
+                    <h3>Database Insights</h3>
+                </div>
+                
+                <div class="stats-cards" id="basicStats">
+                    <!-- Basic stats will be inserted here by JS -->
+                </div>
+                
+                <div class="insights-panel">
+                    <div class="insight-tabs">
+                        <div class="insight-tab active" data-tab="distribution">Species</div>
+                        <div class="insight-tab" data-tab="trends">Trends</div>
+                        <div class="insight-tab" data-tab="diagnoses">Diagnoses</div>
+                        <div class="insight-tab" data-tab="pathologists">Pathologists</div>
+                        <div class="insight-tab" data-tab="type">Type</div>
+                    </div>
+                    
+                    <div class="insight-content">
+                        <div class="insight-pane active" id="distribution-pane">
+                            <div class="mini-chart-container">
+                                <canvas id="speciesChart"></canvas>
+                            </div>
+                            <div class="top-items">
+                                <div class="top-item">
+                                    <span class="item-label">Top Species</span>
+                                    <span class="item-value" id="topSpecies">Loading...</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="insight-pane" id="trends-pane">
+                            <div class="mini-chart-container">
+                                <canvas id="trendsChart"></canvas>
+                            </div>
+                            <div class="trend-summary" id="trendSummary">
+                                Loading trend data...
+                            </div>
+                        </div>
+                        
+                        <div class="insight-pane" id="diagnoses-pane">
+                            <div class="diagnosis-distribution">
+                                <div class="distribution-item">
+                                    <span class="distribution-label">Tumor</span>
+                                    <div class="distribution-bar-container">
+                                        <div class="distribution-bar tumor-bar" id="tumorBar"></div>
+                                        <span class="distribution-value" id="tumorValue">--</span>
+                                    </div>
+                                </div>
+                                <div class="distribution-item">
+                                    <span class="distribution-label">Inflammatory</span>
+                                    <div class="distribution-bar-container">
+                                        <div class="distribution-bar inflammatory-bar" id="inflammatoryBar"></div>
+                                        <span class="distribution-value" id="inflammatoryValue">--</span>
+                                    </div>
+                                </div>
+                                <div class="distribution-item">
+                                    <span class="distribution-label">Degenerative</span>
+                                    <div class="distribution-bar-container">
+                                        <div class="distribution-bar degenerative-bar" id="degenerativeBar"></div>
+                                        <span class="distribution-value" id="degenerativeValue">--</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="top-diagnoses" id="topDiagnoses">
+                                Loading diagnosis data...
+                            </div>
+                        </div>
+                        
+                        <div class="insight-pane" id="pathologists-pane">
+                            <div class="mini-chart-container">
+                                <canvas id="pathologistsChart"></canvas>
+                            </div>
+                            <div class="top-items" id="topPathologists">
+                                Loading pathologist data...
+                            </div>
+                        </div>
+                        
+                        <div class="insight-pane" id="type-pane">
+                            <div class="mini-chart-container">
+                                <canvas id="caseTypeChart"></canvas>
+                            </div>
+                            <div class="top-items" id="topCaseTypes">
+                                Loading case type data...
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="database-activity">
+                    <div class="activity-header">
+                        <i class="fas fa-history"></i>
+                        <span>Recent Activity</span>
+                    </div>
+                    <div class="activity-timeline" id="recentActivity">
+                        <div class="activity-item">
+                            <span class="activity-time">Today</span>
+                            <span class="activity-text">Database last updated</span>
+                        </div>
+                        <div class="activity-item">
+                            <span class="activity-time">This week</span>
+                            <span class="activity-text"><span id="weeklyAdditions">0</span> new cases added</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="section-header">
+                    <i class="fas fa-microscope"></i>
+                    <h3>Analysis Tools</h3>
+                </div>
+                
+                <div class="tool-cards">
+                    <div class="tool-card" onclick="showMorphologicalAnalysis()">
+                        <div class="tool-icon morphology-icon"><i class="fas fa-dna"></i></div>
+                        <div class="tool-info">
+                            <h4>Morphological Features</h4>
+                            <p>Analyze tissue characteristics</p>
+                        </div>
+                    </div>
+                    
+                    <div class="tool-card" onclick="showIHCPatterns()">
+                        <div class="tool-icon ihc-icon"><i class="fas fa-vial"></i></div>
+                        <div class="tool-info">
+                            <h4>IHC Marker Patterns</h4>
+                            <p>Explore immunohistochemistry results</p>
+                        </div>
+                    </div>
+                    
+                    <div class="tool-card" onclick="showBreedPatterns()">
+                        <div class="tool-icon breed-icon"><i class="fas fa-dog"></i></div>
+                        <div class="tool-info">
+                            <h4>Breed-Specific Patterns</h4>
+                            <p>Discover breed correlations</p>
+                        </div>
+                    </div>
+                    
+                    <div class="tool-card" onclick="showDiagnosticTimeline()">
+                        <div class="tool-icon timeline-icon"><i class="fas fa-chart-line"></i></div>
+                        <div class="tool-info">
+                            <h4>Diagnostic Timeline</h4>
+                            <p>Track diagnostic trends over time</p>
+                        </div>
+                    </div>
+
+                    <div class="tool-card" onclick="showDatabaseExplorer()">
+                        <div class="tool-icon explorer-icon"><i class="fas fa-database"></i></div>
+                        <div class="tool-info">
+                            <h4>Database Explorer</h4>
+                            <p>Browse schema and explore fields</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="similar-cases-finder">
+                    <div class="section-header">
+                        <i class="fas fa-search-plus"></i>
+                        <h4>Find Similar Cases</h4>
+                    </div>
+                    <div class="similar-cases-input">
+                        <input type="text" id="similarCaseId" placeholder="Enter Case ID">
+                        <button onclick="findSimilarCases()">
+                            <i class="fas fa-search"></i>
+                        </button>
+                        <div class="tooltip" title="Finds cases with matching characteristics:&#13;• Same tumor type&#13;• Similar tumor location&#13;• Same species/breed&#13;Shows the 10 most similar cases based on these criteria.">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sidebar-section">
+                <div class="section-header">
+                    <i class="fas fa-keyboard"></i>
+                    <h3>Keyboard Shortcuts</h3>
+                </div>
+                <div class="shortcut-list">
+                    <div class="shortcut-item">
+                        <span class="key-combo">Alt+F</span>
+                        <span class="key-action">Focus search box</span>
+                    </div>
+                    <div class="shortcut-item">
+                        <span class="key-combo">Esc</span>
+                        <span class="key-action">Close dialogs</span>
+                    </div>
+                    <div class="shortcut-item">
+                        <span class="key-combo">Alt+1-4</span>
+                        <span class="key-action">Run analysis tools</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div id="searchPlaceholder" class="search-placeholder">
+                <div class="placeholder-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <div class="placeholder-text">
+                    <strong>AI-Powered Veterinary Pathology Search</strong>
+                    <p style="margin-top: 5px; font-size: 13px; color: #666;">Ask complex questions in natural language or search for specific cases</p>
+                </div>
+                
+                <div class="feature-panels">
+                    <div class="feature-panel">
+                        <div class="panel-header">
+                            <i class="fas fa-lightbulb"></i>
+                            <h4>Smart Search Features</h4>
+                        </div>
+                        <ul class="feature-list" style="margin-top: 3px; margin-bottom: 3px; font-size: 14px;">
+                            <li><span class="feature-highlight">Natural language</span> - Ask questions like you would to a colleague</li>
+                            <li><span class="feature-highlight">Semantic matching</span> - Finds relevant cases even with different terms</li>
+                            <li><span class="feature-highlight">AI reranking</span> - Intelligently prioritizes the most relevant results</li>
+                        </ul>
+                    </div>
+                    <div class="feature-panel">
+                        <div class="panel-header">
+                            <i class="fas fa-search"></i>
+                            <h4>Try These Queries</h4>
+                        </div>
+                        <div class="query-examples">
+                            <div class="query-category">
+                                <div class="category-label">Simple:</div>
+                                <div class="example-chips">
+                                    <span class="example-chip" onclick="insertExample('mast cell tumor in a young dog')">mast cell tumor in a young dog</span>
+                                    <span class="example-chip" onclick="insertExample('feline with respiratory symptoms')">feline with respiratory symptoms</span>
+                                </div>
+                            </div>
+                            <div class="query-category">
+                                <div class="category-label">Complex:</div>
+                                <div class="example-chips">
+                                    <span class="example-chip" onclick="insertExample('lymphoma with unusual presentation in older cats with kidney involvement')">lymphoma with unusual presentation in older cats</span>
+                                    <span class="example-chip" onclick="insertExample('golden retrievers with hemangiosarcoma showing metastasis')">golden retrievers with hemangiosarcoma</span>
+                                    <span class="example-chip" onclick="insertExample('show me cases with CD3+ T-cell lymphoma with unusual features')">CD3+ T-cell lymphoma with unusual features</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="search-tips" style="display: flex; flex-direction: column; gap: 10px;">
+                    <div class="tip-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Enable <strong>AI Analysis</strong> for complex queries and detailed explanations</span>
+                    </div>
+                    <div class="tip-item">
+                        <i class="fas fa-bolt"></i>
+                        <span>Use <strong>Semantic Search</strong> for faster results with simpler queries</span>
+                    </div>
+                    <div class="tip-item">
+                        <i class="fas fa-filter"></i>
+                        <span>Filter by report type to narrow your search</span>
+                    </div>
+                </div>
+            </div>
+            <div class="search-results-divider"></div>
+            <div id="searchResults"></div>
+            <div id="analysisResults"></div>
+        </div>
+    </div>
+    <script src="/static/js/charts.js?v=1763210217"></script>
+    <script src="/static/js/analysis.js?v=1763210217"></script>
+    <script src="/static/js/ui_init.js?v=1763210217"></script>
+    <script src="/static/js/search_logic.js?v=1763210217"></script>
+    <script src="/static/js/queue_manager.js?v=1763210217"></script>
+    <script src="/static/js/case_details.js?v=1763210217"></script>
+    <script src="/static/js/export.js?v=1763210217"></script>
+    <script src="/static/js/file_handler.js?v=1763210217"></script>
+    <script src="/static/js/sorting.js?v=1763210217"></script>
+    <script src="/static/js/markdown.js?v=1763210217"></script>
+    <script src="/static/js/chat.js"></script>
+    <style>
+        /* Styles for JSON view */
+        .view-json-btn {
+            margin-left: auto;
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 4px 8px;
+            font-size: 0.85em;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            float: right;
+        }
+
+        .view-json-btn:hover {
+            background-color: #34495e;
+        }
+
+        .json-modal {
+            width: 90%;
+            height: 90%;
+            max-width: 1200px;
+        }
+
+        .json-content {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 4px;
+            overflow: auto;
+            height: calc(100% - 60px);
+            font-family: monospace;
+            white-space: pre-wrap;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .json-actions {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .json-action-btn {
+            background-color: #4a6da7;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 5px 10px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.9em;
+        }
+
+        .json-action-btn:hover {
+            background-color: #3a5a8f;
+        }
+
+        .file-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 15px;
+            border-bottom: 1px solid #ddd;
+        }
+    </style>
+
+    <!-- Queue Panel Modal -->
+    <div id="queueModal" class="modal" style="display: none;">
+        <div class="modal-content queue-modal-content">
+            <div class="modal-header queue-header">
+                <h2><i class="fas fa-tasks"></i> Search Queue</h2>
+                <button class="queue-close-btn" onclick="closeQueuePanel()" title="Close queue panel">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Queue Stats -->
+                <div class="queue-stats">
+                    <div class="stat-item">
+                        <i class="fas fa-hourglass-half"></i>
+                        <span>Queued: <strong id="queuedCount">0</strong></span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-spinner"></i>
+                        <span>Running: <strong id="runningCount">0</strong></span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Recent: <strong id="recentCount">0</strong></span>
+                    </div>
+                </div>
+
+                <!-- Queued Tasks -->
+                <div class="queue-section">
+                    <h3><i class="fas fa-clock"></i> Queued Tasks</h3>
+                    <div id="queuedTasks" class="tasks-list">
+                        <p class="no-tasks">No tasks in queue</p>
+                    </div>
+                </div>
+
+                <!-- Running Tasks -->
+                <div class="queue-section">
+                    <h3><i class="fas fa-cog fa-spin"></i> Running Tasks</h3>
+                    <div id="runningTasks" class="tasks-list">
+                        <p class="no-tasks">No running tasks</p>
+                    </div>
+                </div>
+
+                <!-- Recent Completed Tasks -->
+                <div class="queue-section">
+                    <h3><i class="fas fa-history"></i> Recent Completed</h3>
+                    <div id="recentTasks" class="tasks-list">
+                        <p class="no-tasks">No recent tasks</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
